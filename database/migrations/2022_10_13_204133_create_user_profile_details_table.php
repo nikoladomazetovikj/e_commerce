@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('user_profile_details', function (Blueprint $table) {
-            $table->bigInteger('role_id')->unsigned()->nullable();
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('country');
             $table->string('city');
             $table->string('zip_code');
