@@ -18,6 +18,3 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Artisan::command('store:roles', function () {
-    $this->info('Roles Stored');
-})->purpose('Store default roles names in database');
