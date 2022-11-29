@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,22 +16,24 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DB::table('roles')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         DB::table('roles')->insert([
             [
-                'name' => 'Admin',
+                'id' => Role::ADMIN->value,
+                'name' => Role::ADMIN->name,
             ],
             [
-                'name' => 'Customer',
+                'id' => Role::CUSTOMER->value,
+                'name' => Role::CUSTOMER->name,
             ],
             [
-                'name' => 'Content writer'
+                'id' => Role::CONTENT_WRITER->value,
+                'name' => Role::CONTENT_WRITER->name
             ],
             [
-                'name' => 'Manager'
-            ]
+                'id' => Role::MANAGER->value,
+                'name' => Role::MANAGER->name
+            ],
+
         ]);
     }
 }
