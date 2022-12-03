@@ -22,8 +22,6 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $roleIds = Role::all()->pluck('id')->toArray();
-        $random = array_rand($roleIds);
         return [
             'name' => fake()->name(),
             'surname' => fake()->lastName(),
@@ -31,7 +29,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'), // password (12345678)
             'remember_token' => Str::random(10),
-            'role_id' => $roleIds[$random]
+            'role_id' => \App\Enums\Role::CUSTOMER
         ];
     }
 
