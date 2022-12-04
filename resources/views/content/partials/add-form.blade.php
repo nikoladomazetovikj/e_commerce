@@ -59,7 +59,7 @@
 
         <div>
             <x-input-label for="twitter" :value="__('Twitter')" />
-            <x-text-input id="twitter" name="facebook" type="text" class="mt-1 block w-full" :value="old
+            <x-text-input id="twitter" name="twitter" type="text" class="mt-1 block w-full" :value="old
             ('twitter')"
                            autofocus autocomplete="twitter" />
             <x-input-error class="mt-2" :messages="$errors->get('twitter')" />

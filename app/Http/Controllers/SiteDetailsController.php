@@ -28,9 +28,10 @@ class SiteDetailsController extends Controller
      */
     public function create()
     {
+        $siteDataCount = DB::table('site_details')->count();
         $siteData = DB::table('site_details')->get();
 
-        return view('content.create', compact('siteData'));
+        return view('content.create', compact('siteData', 'siteDataCount'));
     }
 
     /**
@@ -55,27 +56,6 @@ class SiteDetailsController extends Controller
         return redirect()->route('site.content')->with(['status' => 'Site details created']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -84,19 +64,21 @@ class SiteDetailsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SiteDetailsRequest $request, $id)
     {
-        //
+        DB::table('site_details')
+            ->where('id', $id)
+            ->update([
+                'description' => $request->description,
+                'address' => $request->address,
+                'phone_number' => $request->phone_number,
+                'facebook' => $request->facebook,
+                'twitter' => $request->twitter,
+                'youtube' => $request->youtube,
+                'instagram' => $request->instagram
+            ]);
+
+        return redirect()->route('site.content')->with(['status' => 'Site details updated']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

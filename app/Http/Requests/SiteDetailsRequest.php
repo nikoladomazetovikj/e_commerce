@@ -31,7 +31,11 @@ class SiteDetailsRequest extends FormRequest
         return [
             'description' => 'required',
             'address' => 'required',
-            'phone_number' => 'required'
+            'phone_number' => 'required',
+            'facebook' => 'nullable|url',
+            'instagram' => 'nullable|url',
+            'twitter' => 'nullable|url',
+            'youtube' => 'nullable|url'
         ];
     }
 }

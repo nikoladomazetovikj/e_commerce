@@ -20,6 +20,28 @@
                   @if($siteData == 0)
                         {{ __("Please provide content for this site") }}
                     @endif
+
+                    <h5>About Us</h5>
+                      <hr>
+
+                    @foreach($siteDetails as $sd)
+                        <p>
+                            {!! $sd->description !!}
+                        </p>
+
+                        <hr>
+                        <h6>Site Data</h6>
+                        <hr>
+                       <div class="mt-4">
+                           <p><b>Address:</b> {{$sd->address}}</p>
+                           <p><b>Phone:</b> {{$sd->phone_number}}</p>
+                           <p><b>Facebook:</b> {{$sd->facebook}}</p>
+                           <p><b>Twitter:</b> {{$sd->twitter}}</p>
+                           <p><b>Instagram:</b> {{$sd->instagram}}</p>
+                           <p><b>YouTube:</b> {{$sd->youtube}}</p>
+                       </div>
+
+                      @endforeach
                 </div>
             </div>
         </div>

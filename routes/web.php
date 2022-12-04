@@ -32,6 +32,7 @@ Route::middleware('content.writer')->group(function () {
     Route::get('/site', [\App\Http\Controllers\SiteDetailsController::class, 'index'])->name('site.content');
     Route::get('/site/create', [\App\Http\Controllers\SiteDetailsController::class, 'create'])->name('site.content.create');
     Route::post('/site/create', [\App\Http\Controllers\SiteDetailsController::class, 'store'])->name('site.content.store');
+    Route::put('/site/{id}/edit', [\App\Http\Controllers\SiteDetailsController::class, 'update'])->name('site.content.edit');
 });
 
 require __DIR__.'/auth.php';
