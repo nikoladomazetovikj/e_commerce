@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\Role;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -32,7 +33,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $role = Auth::user()->role_id;
+
+        switch ($role) {
+            case Role::ADMIN->value :
+                return redirect(route('dashboard'));
+                break;
+            case Role::CONTENT_WRITER->value:
+                return redirect(route('site.content'));
+                break;
+            default:
+                return redirect(RouteServiceProvider::HOME);
+                break;
+        }
     }
 
     /**
