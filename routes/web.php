@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('content.writer')->group(function () {
     Route::get('/site', [\App\Http\Controllers\SiteDetailsController::class, 'index'])->name('site.content');
+    Route::get('/site/create', [\App\Http\Controllers\SiteDetailsController::class, 'create'])->name('site.content.create');
 });
 
 require __DIR__.'/auth.php';

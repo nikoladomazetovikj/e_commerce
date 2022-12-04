@@ -11,18 +11,36 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
+               @if(\Illuminate\Support\Facades\Auth::user()->role_id == \App\Enums\Role::ADMIN->value ||
+               \Illuminate\Support\Facades\Auth::user()->role_id == \App\Enums\Role::MANAGER->value)
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    </div>
 
-                <!-- Seeds link -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Seeds') }}
-                    </x-nav-link>
-                </div>
+                    <!-- Seeds link -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Seeds') }}
+                        </x-nav-link>
+                    </div>
+                @endif
+
+                @if(\Illuminate\Support\Facades\Auth::user()->role_id == \App\Enums\Role::CONTENT_WRITER->value)
+                    <!-- Seeds link -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('site.content')" :active="request()->routeIs('site.content')">
+                            {{ __('Site Content') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('site.content.create')" :active="request()->routeIs('site.content
+                        .create')">
+                            {{ __('Edit Content') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->

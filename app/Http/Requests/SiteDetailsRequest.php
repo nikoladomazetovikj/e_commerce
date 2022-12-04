@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Role;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SiteDetailsRequest extends FormRequest
 {
@@ -13,6 +15,9 @@ class SiteDetailsRequest extends FormRequest
      */
     public function authorize()
     {
+        if (Auth::user()->role_id == Role::CONTENT_WRITER->value) {
+            return true;
+        }
         return false;
     }
 
@@ -24,7 +29,10 @@ class SiteDetailsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'description' => 'required',
+            'address' => 'required',
+            'social_media' => 'required',
+            'phone_number' => 'required'
         ];
     }
 }

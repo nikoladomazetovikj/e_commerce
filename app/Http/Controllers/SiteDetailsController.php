@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SiteDetailsController extends Controller
 {
@@ -13,7 +14,9 @@ class SiteDetailsController extends Controller
      */
     public function index()
     {
-        //
+        $siteData = DB::table('site_details')->count();
+        $siteDetails = DB::table('site_details')->get();
+        return view('content.index', compact('siteData','siteDetails'));
     }
 
     /**
@@ -23,7 +26,9 @@ class SiteDetailsController extends Controller
      */
     public function create()
     {
-        //
+        $siteData = DB::table('site_details')->get();
+
+        return view('content.create', compact('siteData'));
     }
 
     /**
