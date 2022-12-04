@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SiteDetailsRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class SiteDetailsController extends Controller
 {
@@ -37,9 +39,20 @@ class SiteDetailsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SiteDetailsRequest $request)
     {
-        //
+        DB::table('site_details')
+            ->insert([
+                'description' => $request->description,
+                'address' => $request->address,
+                'phone_number' => $request->phone_number,
+                'facebook' => $request->facebook,
+                'twitter' => $request->twitter,
+                'youtube' => $request->youtube,
+                'instagram' => $request->instagram
+            ]);
+
+        return redirect()->route('site.content')->with(['status' => 'Site details created']);
     }
 
     /**

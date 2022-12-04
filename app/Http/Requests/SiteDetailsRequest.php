@@ -31,7 +31,6 @@ class SiteDetailsRequest extends FormRequest
         return [
             'description' => 'required',
             'address' => 'required',
-            'social_media' => 'required',
             'phone_number' => 'required'
         ];
     }
