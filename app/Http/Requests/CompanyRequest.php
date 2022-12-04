@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Role;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyRequest extends FormRequest
 {
@@ -13,6 +15,9 @@ class CompanyRequest extends FormRequest
      */
     public function authorize()
     {
+        if (Auth::user()->role_id == Role::ADMIN->value) {
+            return true;
+        }
         return false;
     }
 

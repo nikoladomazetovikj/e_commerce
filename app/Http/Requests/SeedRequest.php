@@ -15,7 +15,7 @@ class SeedRequest extends FormRequest
      */
     public function authorize()
     {
-        if (Auth::user()->role() == Role::ADMIN->value || Auth::user()->role() == Role::MANAGER->value) {
+        if (Auth::user()->role_id == Role::ADMIN->value || Auth::user()->role_id == Role::MANAGER->value) {
             return true;
         }
         return false;
