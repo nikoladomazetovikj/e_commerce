@@ -18,8 +18,10 @@ class ContentWriter
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::user()->role_id == Role::CONTENT_WRITER->value) {
+        if (Auth::user()->role_id != Role::CONTENT_WRITER->value) {
             return abort(404);
         }
+
+        return $next($request);
     }
 }

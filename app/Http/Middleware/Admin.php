@@ -18,8 +18,10 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::user()->role_id == Role::ADMIN->value) {
+        if (!Auth::user()->role_id != Role::ADMIN->value) {
             return abort(404);
         }
+
+        return $next($request);
     }
 }

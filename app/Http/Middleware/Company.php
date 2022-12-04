@@ -19,5 +19,8 @@ class Company
     public function handle(Request $request, Closure $next)
     {
         // TODO:
+
+
+        return $next($request);
     }
 }
