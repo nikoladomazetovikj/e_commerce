@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('company_address');
             $table->string('company_phone');
+            $table->string('company_email');
             $table->string('company_website')->nullable();
-            $table->text('additional_details')->nullable();
+            $table->longText('additional_details')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
