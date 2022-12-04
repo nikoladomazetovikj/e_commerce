@@ -21,10 +21,9 @@
                         {{ __("Please provide content for this site") }}
                     @endif
 
-                    <h5>About Us</h5>
-                      <hr>
-
                     @foreach($siteDetails as $sd)
+                          <h5>About Us</h5>
+                          <hr>
                         <p>
                             {!! $sd->description !!}
                         </p>
