@@ -29,7 +29,12 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'company_name' => 'required',
+            'company_address' => 'required',
+            'company_email' => 'required|email',
+            'company_phone' => 'required',
+            'additional_details' => 'nullable',
+            'company_website' => 'nullable|url'
         ];
     }
 }
