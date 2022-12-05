@@ -36,7 +36,7 @@ Route::middleware('content.writer')->group(function () {
 });
 
 
-Route::middleware(['admin', 'manager'])->group(function (){
+Route::middleware(['grand'])->group(function (){
    Route::resource('/company', \App\Http\Controllers\CompanyController::class);
 });
 

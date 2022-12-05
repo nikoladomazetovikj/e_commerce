@@ -25,6 +25,13 @@
                             {{ __('Seeds') }}
                         </x-nav-link>
                     </div>
+
+                    <!-- Company link -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('company.index')" :active="request()->routeIs('company.index')">
+                            {{ __('Company') }}
+                        </x-nav-link>
+                    </div>
                 @endif
 
                 @if(\Illuminate\Support\Facades\Auth::user()->role_id == \App\Enums\Role::CONTENT_WRITER->value)

@@ -16,7 +16,7 @@
                         </div>
                     @endif
                 </div>
-                <!-- TODO: add table -->
+                @include('company.partials.table')
             </div>
         </div>
     </div>

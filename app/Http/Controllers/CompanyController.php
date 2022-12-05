@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\Company;
+use App\Models\Company;
 use App\Http\Requests\CompanyRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class CompanyController extends Controller
     {
         $allCompanies = Company::all();
 
-
+        return view('company.index', compact('allCompanies'));
     }
 
     /**
@@ -50,7 +50,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-
+        $company = Company::where('id', $id)->get();
+        return view('company.show', compact('company'));
     }
 
     /**
@@ -62,7 +63,7 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = Company::where('id', $id)->get();
-        // return view
+        return view('company.edit', compact('company'));
     }
 
     /**
