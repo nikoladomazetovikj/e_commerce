@@ -36,12 +36,14 @@ class AuthenticatedSessionController extends Controller
         $role = Auth::user()->role_id;
 
         switch ($role) {
+            case Role::MANAGER->value:
             case Role::ADMIN->value :
                 return redirect(route('dashboard'));
                 break;
             case Role::CONTENT_WRITER->value:
                 return redirect(route('site.content'));
                 break;
+
             default:
                 return redirect(RouteServiceProvider::HOME);
                 break;
