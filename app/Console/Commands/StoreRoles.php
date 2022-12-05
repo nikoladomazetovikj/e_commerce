@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Enums\Role;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -38,23 +39,26 @@ class StoreRoles extends Command
      */
     public function handle()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DB::table('roles')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         DB::table('roles')->insert([
             [
-                'name' => 'Admin',
+                'id' => Role::ADMIN->value,
+                'name' => Role::ADMIN->name,
             ],
             [
-                'name' => 'Customer',
+                'id' => Role::CUSTOMER->value,
+                'name' => Role::CUSTOMER->name,
             ],
             [
-                'name' => 'Content writer'
+                'id' => Role::CONTENT_WRITER->value,
+                'name' => Role::CONTENT_WRITER->name
             ],
             [
-                'name' => 'Manager'
-            ]
+                'id' => Role::MANAGER->value,
+                'name' => Role::MANAGER->name
+            ],
+
         ]);
 
+        $this->info('The roles was successfully inserted!');
     }
 }

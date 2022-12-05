@@ -21,7 +21,9 @@ class UserProfileFactory extends Factory
 
     public function definition()
     {
+        $users = User::all();
         return [
+            'user_id' => $this->faker->unique()->numberBetween(1, $users->count()),
             'country' => fake()->country(),
             'city' => fake()->city(),
             'zip_code' => fake()->countryCode(),

@@ -14,6 +14,7 @@ class UserProfile extends Model
     protected $table = 'user_profile_details';
 
     protected $primaryKey = null;
+    public $incrementing = false;
 
     protected $fillable = [
         'user_id',
@@ -26,6 +27,6 @@ class UserProfile extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        $this->belongsTo(User::class, 'user_id');
     }
 }

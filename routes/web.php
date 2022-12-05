@@ -20,12 +20,24 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['admin','manager', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('content.writer')->group(function () {
+    Route::get('/site', [\App\Http\Controllers\SiteDetailsController::class, 'index'])->name('site.content');
+    Route::get('/site/create', [\App\Http\Controllers\SiteDetailsController::class, 'create'])->name('site.content.create');
+    Route::post('/site/create', [\App\Http\Controllers\SiteDetailsController::class, 'store'])->name('site.content.store');
+    Route::put('/site/{id}/edit', [\App\Http\Controllers\SiteDetailsController::class, 'update'])->name('site.content.edit');
+});
+
+
+Route::middleware(['admin', 'manager'])->group(function (){
+   Route::resource('/company', \App\Http\Controllers\CompanyController::class);
 });
 
 require __DIR__.'/auth.php';

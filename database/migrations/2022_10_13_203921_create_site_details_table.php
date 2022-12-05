@@ -16,9 +16,12 @@ return new class extends Migration
         Schema::create('site_details', function (Blueprint $table) {
             $table->id();
             $table->longText('description');
-            $table->text('social_media');
             $table->string('phone_number');
             $table->string('address');
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('youtube')->nullable();
             $table->timestamps();
         });
     }
