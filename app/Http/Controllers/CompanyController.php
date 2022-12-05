@@ -61,6 +61,7 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
+        $company = Company::where('id', $id)->get();
         // return view
     }
 
