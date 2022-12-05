@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'content.writer' => \App\Http\Middleware\ContentWriter::class,
         'manager' => \App\Http\Middleware\Manager::class,
         'company' => \App\Http\Middleware\Company::class,
+        'grand' => \App\Http\Middleware\GrandPermissionMiddleware::class
     ];
 }
