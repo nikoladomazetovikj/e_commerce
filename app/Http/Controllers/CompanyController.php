@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Company;
+use App\Http\Requests\CompanyRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -13,7 +16,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $allCompanies = Company::all();
+
+
     }
 
     /**
@@ -23,7 +28,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        // return view
     }
 
     /**
@@ -32,9 +37,9 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
-        //
+        Company::create($request->all());
     }
 
     /**
@@ -45,7 +50,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -56,7 +61,7 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        // return view
     }
 
     /**
@@ -66,9 +71,9 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanyRequest $request, $id)
     {
-        //
+        Company::where('id', $id)->update([$request->all()]);
     }
 
     /**
@@ -80,5 +85,16 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /*
+     * Method to create users for companies
+     * */
+    public function createUserCompany(Request $request)
+    {
+        User::create($request->all());
+
+        // return
     }
 }
