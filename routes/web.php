@@ -35,4 +35,9 @@ Route::middleware('content.writer')->group(function () {
     Route::put('/site/{id}/edit', [\App\Http\Controllers\SiteDetailsController::class, 'update'])->name('site.content.edit');
 });
 
+
+Route::middleware(['admin', 'manager'])->group(function (){
+   Route::resource('/company', \App\Http\Controllers\CompanyController::class);
+});
+
 require __DIR__.'/auth.php';
