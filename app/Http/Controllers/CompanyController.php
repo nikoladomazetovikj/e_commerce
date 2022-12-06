@@ -28,7 +28,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        // return view
+        return view('company.create');
     }
 
     /**
@@ -40,6 +40,8 @@ class CompanyController extends Controller
     public function store(CompanyRequest $request)
     {
         Company::create($request->all());
+
+        return redirect()->route('company.index')->with(['status' => 'Company created']);
     }
 
     /**
