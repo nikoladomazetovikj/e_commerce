@@ -20,6 +20,9 @@
             <th scope="col" class="py-3 px-6">
 
             </th>
+            <th scope="col" class="py-3 px-6">
+
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -38,6 +41,11 @@
                 </td>
                 <td class="py-4 px-6">
                     {{$company->company_phone}}
+                </td>
+                <td class="py-4 px-6">
+                    <a href="{{route('company.show', $company->id)}}">
+                        <x-success-button>{{ __('View') }}</x-success-button>
+                    </a>
                 </td>
                 <td class="py-4 px-6">
                     <a href="{{route('company.edit', $company->id)}}">
