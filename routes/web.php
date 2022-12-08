@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SiteDetailsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,19 +31,19 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('content.writer')->group(function () {
-    Route::get('/site', [\App\Http\Controllers\SiteDetailsController::class, 'index'])->name('site.content');
-    Route::get('/site/create', [\App\Http\Controllers\SiteDetailsController::class, 'create'])->name('site.content.create');
-    Route::post('/site/create', [\App\Http\Controllers\SiteDetailsController::class, 'store'])->name('site.content.store');
-    Route::put('/site/{id}/edit', [\App\Http\Controllers\SiteDetailsController::class, 'update'])->name('site.content.edit');
+    Route::get('/site', [SiteDetailsController::class, 'index'])->name('site.content');
+    Route::get('/site/create', [SiteDetailsController::class, 'create'])->name('site.content.create');
+    Route::post('/site/create', [SiteDetailsController::class, 'store'])->name('site.content.store');
+    Route::put('/site/{id}/edit', [SiteDetailsController::class, 'update'])->name('site.content.edit');
 });
 
 
 Route::middleware(['grand'])->group(function (){
-   Route::resource('/company', \App\Http\Controllers\CompanyController::class);
-   Route::get('/company-archived', [\App\Http\Controllers\CompanyController::class, 'archived'])->name('company.trashed');
-   Route::post('/company/{id}/restore', [\App\Http\Controllers\CompanyController::class, 'restore'])->name('company.restore');
-   Route::get('/company-user', [\App\Http\Controllers\CompanyController::class, 'createUser'])->name('company.user');
-   Route::post('/company-user', [\App\Http\Controllers\CompanyController::class, 'createUserCompany'])->name('company.user.create');
+   Route::resource('/company', CompanyController::class);
+   Route::get('/company-archived', [CompanyController::class, 'archived'])->name('company.trashed');
+   Route::post('/company/{id}/restore', [CompanyController::class, 'restore'])->name('company.restore');
+   Route::get('/company-user', [CompanyController::class, 'createUser'])->name('company.user');
+   Route::post('/company-user', [CompanyController::class, 'createUserCompany'])->name('company.user.create');
 });
 
 require __DIR__.'/auth.php';
