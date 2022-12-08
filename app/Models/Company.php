@@ -15,6 +15,7 @@ class Company extends Model
         'company_address',
         'company_phone',
         'company_website',
-        'additional_details'
+        'additional_details',
+        'company_email'
     ];
 }

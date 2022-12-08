@@ -39,7 +39,7 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        Company::create($request->all());
+        Company::create($request->validated());
 
         return redirect()->route('company.index')->with(['status' => 'Company created']);
     }
@@ -77,7 +77,9 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, $id)
     {
-        Company::where('id', $id)->update([$request->all()]);
+        Company::where('id', $id)->update($request->validated());
+
+        return redirect()->route('company.index')->with(['status' => 'Company edited']);
     }
 
     /**

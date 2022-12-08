@@ -24,8 +24,10 @@
 
                 @if($c->additional_details !== null)
                     <hr>
-
                     <h6 class="dark:text-indigo-300 mt-6">Additional Details:</h6>
+                        <diV class="p-6 text-gray-900 dark:text-gray-100">
+                            {!! $c->additional_details !!}
+                        </diV>
                     @endif
                 @endforeach
             </div>

@@ -44,7 +44,7 @@
                 </td>
                 <td class="py-4 px-6">
                     <a href="{{route('company.show', $company->id)}}">
-                        <x-success-button>{{ __('View') }}</x-success-button>
+                        <x-primary-button>{{ __('View') }}</x-primary-button>
                     </a>
                 </td>
                 <td class="py-4 px-6">
