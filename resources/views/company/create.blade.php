@@ -3,13 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Add Company') }}
         </h2>
-        <hr>
-        <br>
-        <diV class="mt-5">
-            <x-nav-link :href="route('company.create')" :active="request()->routeIs('company.create')">
-                {{ __('Create') }}
-            </x-nav-link>
-        </diV>
+        @include("company.partials.links")
     </x-slot>
 
     <div class="py-12">

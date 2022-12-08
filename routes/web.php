@@ -38,6 +38,8 @@ Route::middleware('content.writer')->group(function () {
 
 Route::middleware(['grand'])->group(function (){
    Route::resource('/company', \App\Http\Controllers\CompanyController::class);
+   Route::get('/company-archived', [\App\Http\Controllers\CompanyController::class, 'archived'])->name('company.trashed');
+   Route::post('/company/{id}/restore', [\App\Http\Controllers\CompanyController::class, 'restore'])->name('company.restore');
 });
 
 require __DIR__.'/auth.php';

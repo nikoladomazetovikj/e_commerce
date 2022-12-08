@@ -95,7 +95,20 @@ class CompanyController extends Controller
         return redirect()->route('company.index')->with(['status' => 'Company deleted']);
     }
 
+    public function archived()
+    {
+        $allCompanies = Company::onlyTrashed()->get();
 
+        return view('company.trashed', compact('allCompanies'));
+    }
+
+
+    public function restore(Request $request, $id)
+    {
+        Company::withTrashed()->where('id', $id)->restore();
+
+        return redirect()->route('company.index')->with(['status' => 'Company restored']);
+    }
     /*
      * Method to create users for companies
      * */
