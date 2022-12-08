@@ -33,6 +33,11 @@ class RoleSeeder extends Seeder
                 'id' => Role::MANAGER->value,
                 'name' => Role::MANAGER->name
             ],
+            [
+                'id' => Role::COMPANY_USER->value,
+                'name' => Role::COMPANY_USER->name
+            ],
+
 
         ]);
     }

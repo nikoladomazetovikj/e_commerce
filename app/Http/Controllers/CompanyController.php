@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Role;
 use App\Models\Company;
 use App\Http\Requests\CompanyRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CompanyController extends Controller
 {
@@ -112,10 +114,37 @@ class CompanyController extends Controller
     /*
      * Method to create users for companies
      * */
+
+    public function createUser()
+    {
+        return view('company.user');
+    }
+
     public function createUserCompany(Request $request)
     {
-        User::create($request->all());
+        // Check if the company email exist
+        $companyEmail = Company::where('company_email', $request->company_email)->value('company_email');
+        $companyUser = User::where('email', $request->company_email)->value('email');
 
-        // return
+        if ($companyEmail != null && $companyUser == null) {
+            $request->validate([
+                'name' => 'required',
+                'surname' => 'required',
+                'password' => 'required'
+            ]);
+            User::create([
+                'name' => $request->name,
+                 'surname' => $request->surname,
+                 'email' => $companyEmail,
+                'password' => Hash::make($request->password),
+                'role_id' => Role::COMPANY_USER->value
+            ]);
+            return redirect()->route('company.index')->with(['status' => 'User for the company created']);
+        }else if ($companyUser != null) {
+            return redirect()->route('company.user')->with(['status' => 'User for this company already exists']);
+        } else{
+            return redirect()->route('company.user')->with(['status' => 'The company email does not exist']);
+        }
+
     }
 }

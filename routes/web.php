@@ -40,6 +40,8 @@ Route::middleware(['grand'])->group(function (){
    Route::resource('/company', \App\Http\Controllers\CompanyController::class);
    Route::get('/company-archived', [\App\Http\Controllers\CompanyController::class, 'archived'])->name('company.trashed');
    Route::post('/company/{id}/restore', [\App\Http\Controllers\CompanyController::class, 'restore'])->name('company.restore');
+   Route::get('/company-user', [\App\Http\Controllers\CompanyController::class, 'createUser'])->name('company.user');
+   Route::post('/company-user', [\App\Http\Controllers\CompanyController::class, 'createUserCompany'])->name('company.user.create');
 });
 
 require __DIR__.'/auth.php';
