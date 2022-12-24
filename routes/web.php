@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeedController;
 use App\Http\Controllers\SiteDetailsController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,11 +40,17 @@ Route::middleware('content.writer')->group(function () {
 
 
 Route::middleware(['grand'])->group(function (){
+
+    // company
    Route::resource('/company', CompanyController::class);
    Route::get('/company-archived', [CompanyController::class, 'archived'])->name('company.trashed');
    Route::post('/company/{id}/restore', [CompanyController::class, 'restore'])->name('company.restore');
    Route::get('/company-user', [CompanyController::class, 'createUser'])->name('company.user');
    Route::post('/company-user', [CompanyController::class, 'createUserCompany'])->name('company.user.create');
+
+   //seed
+    Route::resource('/seeds', SeedController::class);
+    Route::get('/seeds-archived', [SeedController::class, 'archived'])->name('seeds.trashed');
 });
 
 require __DIR__.'/auth.php';
