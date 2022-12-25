@@ -17,7 +17,7 @@ class SeedController extends Controller
      */
     public function index()
     {
-        $allSeeds = Seed::with('category')->get();
+        $allSeeds = Seed::with('category')->orderBy('created_at', 'desc')->paginate(5);
 
         return view('seeds.index',compact('allSeeds'));
     }

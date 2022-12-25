@@ -43,7 +43,7 @@
                    {{$seed->price}}
                 </td>
                 <td class="py-4 px-6">
-                    {{$seed->category->name}}
+                    {{$seed->category->friendly_name}}
                 </td>
                 <td class="py-4 px-6">
                     {{$seed->quantity}}
@@ -97,4 +97,7 @@
         @endforeach
         </tbody>
     </table>
+   <div>
+       {{ $allSeeds->links() }}
+   </div>
 </div>
