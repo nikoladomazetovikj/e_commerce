@@ -103,7 +103,9 @@ class SeedController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Seed::where('id', $id)->delete();
+
+        return redirect()->route('seeds.index')->with(['status' => 'Seed deleted']);
     }
 
     public function archived()
