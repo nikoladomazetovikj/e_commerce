@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/seeds', [App\Http\Controllers\Api\SeedsController::class, 'index']);
+Route::get('/seeds/{id}', [App\Http\Controllers\Api\SeedsController::class, 'show']);
