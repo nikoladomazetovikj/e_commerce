@@ -110,6 +110,16 @@ class SeedController extends Controller
 
     public function archived()
     {
-       //TODO:
+        $allSeeds = Seed::onlyTrashed()->with('category')->get();
+
+        return view('seeds.trashed', compact('allSeeds'));
     }
+
+    public function restore(Request $request, $id)
+    {
+        Seed::withTrashed()->where('id', $id)->restore();
+
+        return redirect()->route('seeds.index')->with(['status' => 'Seed restored']);
+    }
+
 }

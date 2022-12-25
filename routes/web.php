@@ -51,6 +51,7 @@ Route::middleware(['grand'])->group(function (){
    //seed
     Route::resource('/seeds', SeedController::class);
     Route::get('/seeds-archived', [SeedController::class, 'archived'])->name('seeds.trashed');
+    Route::post('/seeds/{id}/restore', [SeedController::class, 'restore'])->name('seeds.restore');
 });
 
 require __DIR__.'/auth.php';
