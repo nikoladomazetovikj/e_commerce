@@ -87,7 +87,7 @@
                            </x-secondary-button>
 
                            <x-danger-button class="ml-3">
-                               {{ __('Delete Company') }}
+                               {{ __('Delete Seed') }}
                            </x-danger-button>
                        </div>
                    </form>
