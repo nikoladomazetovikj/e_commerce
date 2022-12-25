@@ -1,6 +1,6 @@
 <hr>
 <br>
-<diV class="mt-5">
+<div class="mt-5">
     <x-nav-link :href="route('seeds.create')" :active="request()->routeIs('seeds.create')">
         {{ __('Add Seed') }}
     </x-nav-link>
@@ -8,4 +8,4 @@
     <x-nav-link :href="route('seeds.trashed')" :active="request()->routeIs('seeds.trashed')">
         {{ __('Archived Seeds') }}
     </x-nav-link>
-</diV>
+</div>
