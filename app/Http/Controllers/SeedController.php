@@ -122,4 +122,28 @@ class SeedController extends Controller
         return redirect()->route('seeds.index')->with(['status' => 'Seed restored']);
     }
 
+
+    public function seedsForContentWriters()
+    {
+        $allSeeds = Seed::with('category')->orderBy('created_at', 'desc')->paginate(5);
+
+        return view('content.seeds',compact('allSeeds'));
+    }
+
+    public function editDescription(Request $request, $id)
+    {
+        $seed = Seed::with('category')->where('id', $id)->get();
+
+        return view('content.seed', compact('seed'));
+    }
+
+    public function provideDescription(Request $request, $id)
+    {
+        Seed::where('id', $id)->update([
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('content.seeds')->with(['status' => 'Seed description added']);
+    }
+
 }
