@@ -36,6 +36,13 @@ Route::middleware('content.writer')->group(function () {
     Route::get('/site/create', [SiteDetailsController::class, 'create'])->name('site.content.create');
     Route::post('/site/create', [SiteDetailsController::class, 'store'])->name('site.content.store');
     Route::put('/site/{id}/edit', [SiteDetailsController::class, 'update'])->name('site.content.edit');
+
+    // seed content
+    Route::prefix('/seed-content')->group(function () {
+        Route::get('/seeds', [SeedController::class, 'seedsForContentWriters'])->name('contentSeeds.all');
+        Route::get('/seed/{id)', [SeedController::class, 'editDescription']);
+        Route::put('/seed/{id}', [SeedController::class, 'provideDescription']);
+    });
 });
 
 
