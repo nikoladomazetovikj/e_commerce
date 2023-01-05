@@ -40,7 +40,7 @@ Route::middleware('content.writer')->group(function () {
     // seed content
     Route::prefix('/seed-content')->group(function () {
         Route::get('/seeds', [SeedController::class, 'seedsForContentWriters'])->name('contentSeeds.all');
-        Route::get('/seed/{id)', [SeedController::class, 'editDescription']);
+        Route::get('/seed/{id}', [SeedController::class, 'editDescription'])->name('contentSeeds.edit');
         Route::put('/seed/{id}', [SeedController::class, 'provideDescription']);
     });
 });
