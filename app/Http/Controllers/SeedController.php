@@ -143,7 +143,7 @@ class SeedController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('content.seeds')->with(['status' => 'Seed description added']);
+        return redirect()->route('contentSeeds.all')->with(['status' => 'Seed description added']);
     }
 
 }

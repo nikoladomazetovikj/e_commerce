@@ -41,7 +41,7 @@ Route::middleware('content.writer')->group(function () {
     Route::prefix('/seed-content')->group(function () {
         Route::get('/seeds', [SeedController::class, 'seedsForContentWriters'])->name('contentSeeds.all');
         Route::get('/seed/{id}', [SeedController::class, 'editDescription'])->name('contentSeeds.edit');
-        Route::put('/seed/{id}', [SeedController::class, 'provideDescription']);
+        Route::put('/seed/{id}/edit', [SeedController::class, 'provideDescription'])->name('contentSeeds.description');
     });
 });
 

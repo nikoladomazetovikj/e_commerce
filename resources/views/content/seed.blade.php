@@ -7,17 +7,16 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                @foreach($seed as $s)
-                    <h1 class="dark:text-indigo-300">{{$s->name}}</h1>
-                    <hr>
-                    <h6 class="dark:text-indigo-300 mt-6">Description:</h6>
-                    <diV class="p-6 text-gray-900 dark:text-gray-100">
-                        {!! $s->description !!}
-                    </diV>
+           @include("content.partials.description")
+        </div>
+    </div>
 
-                @endforeach
-            </div>
-
-
+            <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+            <script>
+                ClassicEditor
+                    .create( document.querySelector( '#description' ) )
+                    .catch( error => {
+                        console.error( error );
+                    } );
+            </script>
 </x-app-layout>
