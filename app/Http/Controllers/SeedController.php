@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\ContentWriter;
+use App\Http\Requests\ContentWriterSeedRequest;
 use App\Http\Requests\SeedRequest;
 use App\Models\Category;
 use App\Models\Seed;
@@ -137,7 +139,7 @@ class SeedController extends Controller
         return view('content.seed', compact('seed'));
     }
 
-    public function provideDescription(Request $request, $id)
+    public function provideDescription(ContentWriterSeedRequest $request, $id)
     {
         Seed::where('id', $id)->update([
             'description' => $request->description,
