@@ -27,7 +27,7 @@
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <img src="images/{{$seed->image}}" width="150"  height="150">
+                    <img src="{{asset('images/' . $seed->image)}}" width="150"  height="150">
                 </th>
 
                 <td class="py-4 px-6">
@@ -43,7 +43,7 @@
                     {{$seed->quantity}}
                 </td>
                 <td class="py-4 px-6">
-                    <a href="{{route('seeds.edit', $seed->id)}}">
+                    <a href="{{route('contentSeeds.edit', $seed->id)}}">
                         <x-secondary-button>{{ __('Edit') }}</x-secondary-button>
                     </a>
                 </td>
