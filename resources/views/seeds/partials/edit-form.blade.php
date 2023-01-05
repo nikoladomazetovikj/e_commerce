@@ -30,7 +30,8 @@
         </div>
 
         <div>
-            <x-input-label for="image" :value="__('Image')" />
+            <x-input-label for="image" :value="__('Image (you can add new image if it is need, otherwise image will
+            remain the same)')" />
             <x-text-input id="image" name="image" type="file" class="mt-1 block w-full" :value="old
             ('image', $s->image)"
                           autofocus autocomplete="image" />

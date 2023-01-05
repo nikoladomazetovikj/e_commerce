@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\ContentWriter;
 use App\Http\Requests\ContentWriterSeedRequest;
 use App\Http\Requests\SeedRequest;
+use App\Http\Requests\UpdateSeedRequest;
 use App\Models\Category;
 use App\Models\Seed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class SeedController extends Controller
 {
@@ -95,9 +96,30 @@ class SeedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSeedRequest $request, $id)
     {
-        //
+        $seed = Seed::find($id);
+
+        if ($request->hasFile('image')) {
+            $directory = 'images/' . $seed->image;
+            if (File::exists($directory)) {
+                File::delete($directory);
+            }
+            // get image random name
+            $rand = Str::random(100);
+            $img = $rand . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $img);
+            $seed->image = $img;
+        }
+
+        $seed->name = $request->name;
+        $seed->description = $request->description;
+        $seed->price = $request->price;
+        $seed->quantity = $request->quantity;
+
+        $seed->save();
+
+        return redirect()->route('seeds.index')->with(['status' => 'Seed updated']);
     }
 
     /**
