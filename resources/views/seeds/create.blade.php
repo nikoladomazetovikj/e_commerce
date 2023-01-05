@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Add Company') }}
+            {{ __('Add Seed') }}
         </h2>
         @include("seeds.partials.links")
     </x-slot>
@@ -12,7 +12,6 @@
             @include("seeds.partials.add-form")
         </div>
 
-{{--            Used for additional company details--}}
         <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
         <script>
             ClassicEditor

@@ -82,7 +82,10 @@ class SeedController extends Controller
      */
     public function edit($id)
     {
-        //
+        $seed = Seed::with('category')->where('id', $id)->get();
+        $categories = Category::all();
+
+        return view('seeds.edit', compact('seed', 'categories'));
     }
 
     /**
