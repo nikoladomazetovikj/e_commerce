@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             UserProfileSeeder::class,
             CompanySeeder::class,
-            SeedSeeder::class
+            SeedSeeder::class,
+            OnlinePaymentsSeeder::class
         ]);
     }
 }
