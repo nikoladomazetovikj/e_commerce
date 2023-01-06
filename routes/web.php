@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Reports\AdminCompaniesReports as AdminCompaniesReportsAlias;
 use App\Http\Controllers\Reports\AdminUserReports as AdminUserReportsAlias;
 use App\Http\Controllers\SeedController;
 use App\Http\Controllers\SiteDetailsController;
@@ -63,6 +64,7 @@ Route::middleware('admin')->group(function () {
 
     Route::prefix('/reports')->group(function () {
         Route::get('/usersPayments', AdminUserReportsAlias::class)->name('reports.adminUser');
+        Route::get('/companiesPayments', AdminCompaniesReportsAlias::class)->name('reports.adminCompany');
     });
 
 });
