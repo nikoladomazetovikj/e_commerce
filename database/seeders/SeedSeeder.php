@@ -25,7 +25,8 @@ class SeedSeeder extends Seeder
                 'price' => '40.00',
                 'quantity' => '1500',
                 'category_id' => Category::FLAX_SEED->value,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Golden Flax Seed',
@@ -34,7 +35,8 @@ class SeedSeeder extends Seeder
                 'price' => '60.00',
                 'quantity' => '2500',
                 'category_id' => Category::FLAX_SEED->value,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'White Sesame',
@@ -43,7 +45,8 @@ class SeedSeeder extends Seeder
                 'price' => '30.00',
                 'quantity' => '12000',
                 'category_id' => Category::SESAME_SEED->value,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Red Sesame',
@@ -52,7 +55,8 @@ class SeedSeeder extends Seeder
                 'price' => '35.00',
                 'quantity' => '400',
                 'category_id' => Category::SESAME_SEED->value,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Black Sesame',
@@ -61,7 +65,8 @@ class SeedSeeder extends Seeder
                 'price' => '45.00',
                 'quantity' => '500',
                 'category_id' => Category::SESAME_SEED->value,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Brown Sesame',
@@ -70,7 +75,8 @@ class SeedSeeder extends Seeder
                 'price' => '55.00',
                 'quantity' => '300',
                 'category_id' => Category::SESAME_SEED->value,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Sunflower',
@@ -79,7 +85,8 @@ class SeedSeeder extends Seeder
                 'price' => '25.00',
                 'quantity' => '25000',
                 'category_id' => Category::SUNFLOWER_SEED->value,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'White Chia',
@@ -88,7 +95,8 @@ class SeedSeeder extends Seeder
                 'price' => '30.00',
                 'quantity' => '5000',
                 'category_id' => Category::CHIA_SEED->value,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Black Chia',
@@ -97,7 +105,8 @@ class SeedSeeder extends Seeder
                 'price' => '30.00',
                 'quantity' => '3000',
                 'category_id' => Category::CHIA_SEED->value,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Hemp',
@@ -106,9 +115,81 @@ class SeedSeeder extends Seeder
                 'price' => '23.00',
                 'quantity' => '800',
                 'category_id' => Category::HEMP_SEED->value,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Pumpkin Seed',
+                'description' => 'TBD',
+                'image' => 'pumpkin_seed.jpg',
+                'price' => '15.00',
+                'quantity' => '10000',
+                'category_id' => Category::PUMPKIN_SEED->value,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Pomegranate Seed',
+                'description' => 'TBD',
+                'image' => 'pomegranate_seed.jpg',
+                'price' => '15.00',
+                'quantity' => '10000',
+                'category_id' => Category::POMEGRANATE_SEED->value,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Red Quinoa',
+                'description' => 'TBD',
+                'image' => 'red_quinoa.jpg',
+                'price' => '55.00',
+                'quantity' => '500',
+                'category_id' => Category::QUINOA->value,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'White Quinoa',
+                'description' => 'TBD',
+                'image' => 'white_quinoa.jpg',
+                'price' => '45.00',
+                'quantity' => '800',
+                'category_id' => Category::QUINOA->value,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Black Quinoa',
+                'description' => 'TBD',
+                'image' => 'black_quinoa.jpg',
+                'price' => '75.00',
+                'quantity' => '400',
+                'category_id' => Category::QUINOA->value,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
 
+            [
+                'name' => 'Pine Nuts',
+                'description' => 'TBD',
+                'image' => 'pine_nuts.jpg',
+                'price' => '55.00',
+                'quantity' => '15000',
+                'category_id' => Category::PINE_NUTS->value,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            [
+                'name' => 'Caraway',
+                'description' => 'TBD',
+                'image' => 'caraway_seed.jpg',
+                'price' => '15.00',
+                'quantity' => '1500000',
+                'category_id' => Category::CARAWAY_SEED->value,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
 
         ]);
     }
