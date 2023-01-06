@@ -68,6 +68,8 @@ Route::middleware('admin')->group(function () {
         Route::get('/companiesPayments', AdminCompaniesReportsAlias::class)->name('reports.adminCompany');
         Route::get('/usersPayments/export-csv', [CSVController::class, 'adminCustomersReport'])
             ->name('csv.adminCustomers');
+        Route::get('/companiesPayments/export-csv', [CSVController::class, 'adminCompaniesReport'])
+            ->name('csv.adminCompanies');
     });
 
 });
