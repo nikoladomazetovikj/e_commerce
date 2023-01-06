@@ -23,7 +23,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'brown_flax_seed.jpg',
                 'price' => '40.00',
-                'quantity' => '1500',
+                'quantity' => '15000',
                 'category_id' => Category::FLAX_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -33,7 +33,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'golden_flax_seed.jpg',
                 'price' => '60.00',
-                'quantity' => '2500',
+                'quantity' => '25000',
                 'category_id' => Category::FLAX_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -43,7 +43,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'white_sesame.jpg',
                 'price' => '30.00',
-                'quantity' => '12000',
+                'quantity' => '120000',
                 'category_id' => Category::SESAME_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -53,7 +53,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'red_sesame.jpg',
                 'price' => '35.00',
-                'quantity' => '400',
+                'quantity' => '400000',
                 'category_id' => Category::SESAME_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -63,7 +63,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'black_sesame.jpg',
                 'price' => '45.00',
-                'quantity' => '500',
+                'quantity' => '50000',
                 'category_id' => Category::SESAME_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -73,7 +73,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'brown_flax_seed.jpg',
                 'price' => '55.00',
-                'quantity' => '300',
+                'quantity' => '30000',
                 'category_id' => Category::SESAME_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -83,7 +83,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'sunflower_seeds.jpg',
                 'price' => '25.00',
-                'quantity' => '25000',
+                'quantity' => '250000',
                 'category_id' => Category::SUNFLOWER_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -93,7 +93,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'white_chia.jpg',
                 'price' => '30.00',
-                'quantity' => '5000',
+                'quantity' => '50000',
                 'category_id' => Category::CHIA_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -103,7 +103,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'black_chia.jpg',
                 'price' => '30.00',
-                'quantity' => '3000',
+                'quantity' => '30000',
                 'category_id' => Category::CHIA_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -113,7 +113,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'hemp_seed.jpg',
                 'price' => '23.00',
-                'quantity' => '800',
+                'quantity' => '80000',
                 'category_id' => Category::HEMP_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -123,7 +123,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'pumpkin_seed.jpg',
                 'price' => '15.00',
-                'quantity' => '10000',
+                'quantity' => '1000000',
                 'category_id' => Category::PUMPKIN_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -133,7 +133,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'pomegranate_seed.jpg',
                 'price' => '15.00',
-                'quantity' => '10000',
+                'quantity' => '1000000',
                 'category_id' => Category::POMEGRANATE_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -143,7 +143,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'red_quinoa.jpg',
                 'price' => '55.00',
-                'quantity' => '500',
+                'quantity' => '50000',
                 'category_id' => Category::QUINOA->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -153,7 +153,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'white_quinoa.jpg',
                 'price' => '45.00',
-                'quantity' => '800',
+                'quantity' => '80000',
                 'category_id' => Category::QUINOA->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -163,7 +163,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'black_quinoa.jpg',
                 'price' => '75.00',
-                'quantity' => '400',
+                'quantity' => '40000',
                 'category_id' => Category::QUINOA->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -174,7 +174,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'pine_nuts.jpg',
                 'price' => '55.00',
-                'quantity' => '15000',
+                'quantity' => '150000',
                 'category_id' => Category::PINE_NUTS->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -185,7 +185,7 @@ class SeedSeeder extends Seeder
                 'description' => 'TBD',
                 'image' => 'caraway_seed.jpg',
                 'price' => '15.00',
-                'quantity' => '1500000',
+                'quantity' => '15000000',
                 'category_id' => Category::CARAWAY_SEED->value,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
