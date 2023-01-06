@@ -8,8 +8,4 @@
     <x-nav-link :href="route('company.trashed')" :active="request()->routeIs('company.trashed')">
         {{ __('Archived Companies') }}
     </x-nav-link>
-    <span class="dark:text-indigo-300">/</span>
-    <x-nav-link :href="route('company.user')" :active="request()->routeIs('company.user')">
-        {{ __('Create Company User') }}
-    </x-nav-link>
 </diV>

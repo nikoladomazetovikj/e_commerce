@@ -111,40 +111,4 @@ class CompanyController extends Controller
 
         return redirect()->route('company.index')->with(['status' => 'Company restored']);
     }
-    /*
-     * Method to create users for companies
-     * */
-
-    public function createUser()
-    {
-        return view('company.user');
-    }
-
-    public function createUserCompany(Request $request)
-    {
-        // Check if the company email exist
-        $companyEmail = Company::where('company_email', $request->company_email)->value('company_email');
-        $companyUser = User::where('email', $request->company_email)->value('email');
-
-        if ($companyEmail != null && $companyUser == null) {
-            $request->validate([
-                'name' => 'required',
-                'surname' => 'required',
-                'password' => 'required'
-            ]);
-            User::create([
-                'name' => $request->name,
-                 'surname' => $request->surname,
-                 'email' => $companyEmail,
-                'password' => Hash::make($request->password),
-                'role_id' => Role::COMPANY_USER->value
-            ]);
-            return redirect()->route('company.index')->with(['status' => 'User for the company created']);
-        }else if ($companyUser != null) {
-            return redirect()->route('company.user')->with(['status' => 'User for this company already exists']);
-        } else{
-            return redirect()->route('company.user')->with(['status' => 'The company email does not exist']);
-        }
-
-    }
 }

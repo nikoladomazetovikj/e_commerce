@@ -52,8 +52,6 @@ Route::middleware(['grand'])->group(function (){
    Route::resource('/company', CompanyController::class);
    Route::get('/company-archived', [CompanyController::class, 'archived'])->name('company.trashed');
    Route::post('/company/{id}/restore', [CompanyController::class, 'restore'])->name('company.restore');
-   Route::get('/company-user', [CompanyController::class, 'createUser'])->name('company.user');
-   Route::post('/company-user', [CompanyController::class, 'createUserCompany'])->name('company.user.create');
 
    //seed
     Route::resource('/seeds', SeedController::class);
