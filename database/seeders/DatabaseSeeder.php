@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             ManagamentSeeder::class,
             UserSeeder::class,
             UserProfileSeeder::class,
-            CompanySeeder::class
+            CompanySeeder::class,
+            SeedSeeder::class
         ]);
     }
 }
