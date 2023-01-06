@@ -6,5 +6,8 @@
             {{ __('Customer Payments Report') }}
         </x-nav-link>
         <span class="dark:text-indigo-300">/</span>
+        <x-nav-link :href="route('reports.adminCompany')" :active="request()->routeIs('reports.adminCompany')">
+            {{ __('Companies Payments Report') }}
+        </x-nav-link>
     @endif
 </div>
