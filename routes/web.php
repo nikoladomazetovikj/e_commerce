@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CSVController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reports\AdminCompaniesReports as AdminCompaniesReportsAlias;
 use App\Http\Controllers\Reports\AdminUserReports as AdminUserReportsAlias;
@@ -65,6 +66,8 @@ Route::middleware('admin')->group(function () {
     Route::prefix('/reports')->group(function () {
         Route::get('/usersPayments', AdminUserReportsAlias::class)->name('reports.adminUser');
         Route::get('/companiesPayments', AdminCompaniesReportsAlias::class)->name('reports.adminCompany');
+        Route::get('/usersPayments/export-csv', [CSVController::class, 'adminCustomersReport'])
+            ->name('csv.adminCustomers');
     });
 
 });
