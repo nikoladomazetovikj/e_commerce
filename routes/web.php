@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Reports\AdminUserReports as AdminUserReportsAlias;
 use App\Http\Controllers\SeedController;
 use App\Http\Controllers\SiteDetailsController;
 use Illuminate\Support\Facades\Route;
@@ -47,16 +48,23 @@ Route::middleware('content.writer')->group(function () {
 
 
 Route::middleware(['grand'])->group(function (){
-
     // company
    Route::resource('/company', CompanyController::class);
    Route::get('/company-archived', [CompanyController::class, 'archived'])->name('company.trashed');
    Route::post('/company/{id}/restore', [CompanyController::class, 'restore'])->name('company.restore');
-
    //seed
     Route::resource('/seeds', SeedController::class);
     Route::get('/seeds-archived', [SeedController::class, 'archived'])->name('seeds.trashed');
     Route::post('/seeds/{id}/restore', [SeedController::class, 'restore'])->name('seeds.restore');
+});
+
+
+Route::middleware('admin')->group(function () {
+
+    Route::prefix('/reports')->group(function () {
+        Route::get('/usersPayments', AdminUserReportsAlias::class)->name('reports.adminUser');
+    });
+
 });
 
 require __DIR__.'/auth.php';
