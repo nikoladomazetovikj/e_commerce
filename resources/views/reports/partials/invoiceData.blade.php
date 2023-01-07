@@ -3,16 +3,16 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="py-3 px-6">
-                ORDER N.
+                SEED NAME
             </th>
             <th scope="col" class="py-3 px-6">
-                PRICE PAYED
+                CATEGORY
             </th>
             <th scope="col" class="py-3 px-6">
-                DATE
+                QUANTITY
             </th>
             <th scope="col" class="py-3 px-6">
-
+                SUBTOTAL
             </th>
         </tr>
         </thead>
@@ -21,26 +21,30 @@
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$q->id}}
+                    {{$q->seed_name}}
                 </th>
 
                 <td class="py-4 px-6">
-                    {{$q->total_price}}
+                    {{$q->category_name}}
                 </td>
                 <td class="py-4 px-6">
-                    {{$q->date}}
+                    {{$q->quantity}}
                 </td>
                 <td class="py-4 px-6">
-                    <a href="{{route('reports.invoicesData', $q->id)}}">
-                        <x-secondary-button>{{ __('View') }}</x-secondary-button>
-                    </a>
+                    {{$q->subtotal}}
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
-    <div>
-        {{ $query->links() }}
+
+
+    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">TOTAL:</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{$total}}</p>
+
     </div>
+
+
 </div>
 
