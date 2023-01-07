@@ -21,8 +21,15 @@
 
                     <!-- Seeds link -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        <x-nav-link :href="route('seeds.index')" :active="request()->routeIs('seeds.index')">
                             {{ __('Seeds') }}
+                        </x-nav-link>
+                    </div>
+
+                    <!-- Company link -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('company.index')" :active="request()->routeIs('company.index')">
+                            {{ __('Company') }}
                         </x-nav-link>
                     </div>
                 @endif
@@ -38,6 +45,11 @@
                         <x-nav-link :href="route('site.content.create')" :active="request()->routeIs('site.content
                         .create')">
                             {{ __('Edit Content') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('contentSeeds.all')" :active="request()->routeIs('contentSeeds.all')">
+                            {{ __('Seeds Content') }}
                         </x-nav-link>
                     </div>
                 @endif

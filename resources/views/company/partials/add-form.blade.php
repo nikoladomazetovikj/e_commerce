@@ -9,9 +9,8 @@
         </p>
     </header>
 
-    <form method="post" action="{{ route('company.create') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('company.store') }}" class="mt-6 space-y-6">
         @csrf
-
         <div>
             <x-input-label for="company_name" :value="__('Name')" />
             <x-text-input id="company_name" name="company_name" type="text" class="mt-1 block w-full" :value="old('company_name')"

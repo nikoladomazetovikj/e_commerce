@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\Company;
+use App\Enums\Role;
+use App\Models\Company;
 use App\Http\Requests\CompanyRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CompanyController extends Controller
 {
@@ -18,7 +20,7 @@ class CompanyController extends Controller
     {
         $allCompanies = Company::all();
 
-
+        return view('company.index', compact('allCompanies'));
     }
 
     /**
@@ -28,7 +30,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        // return view
+        return view('company.create');
     }
 
     /**
@@ -39,7 +41,9 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        Company::create($request->all());
+        Company::create($request->validated());
+
+        return redirect()->route('company.index')->with(['status' => 'Company created']);
     }
 
     /**
@@ -50,7 +54,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-
+        $company = Company::where('id', $id)->get();
+        return view('company.show', compact('company'));
     }
 
     /**
@@ -62,7 +67,7 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = Company::where('id', $id)->get();
-        // return view
+        return view('company.edit', compact('company'));
     }
 
     /**
@@ -74,7 +79,9 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, $id)
     {
-        Company::where('id', $id)->update([$request->all()]);
+        Company::where('id', $id)->update($request->validated());
+
+        return redirect()->route('company.index')->with(['status' => 'Company edited']);
     }
 
     /**
@@ -85,17 +92,23 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Company::where('id', $id)->delete();
+
+        return redirect()->route('company.index')->with(['status' => 'Company deleted']);
+    }
+
+    public function archived()
+    {
+        $allCompanies = Company::onlyTrashed()->get();
+
+        return view('company.trashed', compact('allCompanies'));
     }
 
 
-    /*
-     * Method to create users for companies
-     * */
-    public function createUserCompany(Request $request)
+    public function restore(Request $request, $id)
     {
-        User::create($request->all());
+        Company::withTrashed()->where('id', $id)->restore();
 
-        // return
+        return redirect()->route('company.index')->with(['status' => 'Company restored']);
     }
 }

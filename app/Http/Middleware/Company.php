@@ -20,7 +20,6 @@ class Company
     {
         // TODO:
 
-
         return $next($request);
     }
 }

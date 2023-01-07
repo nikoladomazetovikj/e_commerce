@@ -18,7 +18,7 @@ class Manager
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::user()->role_id != Role::MANAGER->value) {
+        if (Auth::user()->role_id != Role::MANAGER->value) {
             return abort(404);
         }
 
