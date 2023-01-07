@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileDetailsRequest;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
@@ -17,9 +20,14 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
+        $profileDetails = DB::table('user_profile_details')->where('user_id', $request->user()->id)->get();
+
         return view('profile.edit', [
             'user' => $request->user(),
+            'data' => $profileDetails,
+            'flag' => $profileDetails->isEmpty() ? false : true
         ]);
+
     }
 
     /**
@@ -64,4 +72,28 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function updateDetails(ProfileDetailsRequest $request)
+    {
+        UserProfile::where('user_id', $request->user()->id)->update($request->validated());
+
+        return Redirect::route('profile.edit')->with('status', 'profile-details-updated');
+    }
+
+    public function storeUserDetails(ProfileDetailsRequest $request)
+    {
+        UserProfile::create([
+            'user_id' => $request->user()->id,
+            'country' => $request->country,
+            'city' => $request->city,
+            'zip_code' => $request->zip_code,
+            'street'  => $request->street,
+            'phone_number' => $request->phone_number
+
+            ]);
+
+        return Redirect::route('profile.edit')->with('status', 'profile-details-inserted');
+
+    }
+
 }
