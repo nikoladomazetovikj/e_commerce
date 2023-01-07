@@ -126,4 +126,25 @@ class PaymentController extends Controller
 
         return redirect()->route('companyPayment.index')->with(['status' => 'Order agreement created']);
     }
+
+    public function companyAgreement($id)
+    {
+        $query = DB::table('companies_payments', 'cp')
+            ->select('cp.id',
+                's.name as seed_name',
+                'c.friendly_name as category_name',
+                'co.company_name',
+                'cp.quantity',
+                'cp.total_price',
+                'cp.agreement',
+                'cp.agreement_date',
+            )
+            ->join('seeds AS s', 's.id', '=', 'cp.seed_id')
+            ->join('categories AS c', 'c.id', '=', 's.category_id')
+            ->join('companies AS co', 'co.id', '=', 'cp.company_id')
+            ->where('cp.id', $id)
+            ->get();
+
+        return view('company.agreement', compact('query'));
+    }
 }

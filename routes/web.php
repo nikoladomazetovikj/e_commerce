@@ -87,6 +87,8 @@ Route::middleware('manager')->group(function () {
     Route::get('company-payments', [PaymentController::class, 'companyPayments'])->name('companyPayment.index');
     Route::get('company-payment', [PaymentController::class, 'companyPayment'])->name('companyPayment.create');
     Route::post('company-payment-add', [PaymentController::class, 'companyPaymentStore'])->name('companyPayment.store');
+    Route::get('company-payment/{id}', [PaymentController::class, 'companyAgreement'])->name('companyPayment.show');
+
 
 });
 

@@ -23,6 +23,9 @@
             <th scope="col" class="py-3 px-6">
                 DATE
             </th>
+            <th scope="col" class="py-3 px-6">
+
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -51,6 +54,11 @@
                 </td>
                 <td class="py-4 px-6">
                     {{$q->date}}
+                </td>
+                <td class="py-4 px-6">
+                    <a href="{{route('companyPayment.show', $q->id)}}">
+                        <x-secondary-button>{{ __('View') }}</x-secondary-button>
+                    </a>
                 </td>
             </tr>
         @endforeach
