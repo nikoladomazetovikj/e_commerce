@@ -21,19 +21,26 @@ class OnlinePaymentsSeeder extends Seeder
         $rows = 500;
 
         for ($i = 1; $i <= $rows; $i++) {
-            $seedId = Seed::all()->random()->id;
-            $seedPrice = Seed::where('id', $seedId)->value('price');
-            $quantity = rand(1,10);
-            $totalPrice = $quantity * $seedPrice;
-            DB::table('online_payments')->insert([
-                [
-                    'user_id' => User::all()->random()->id,
-                    'seed_id' => $seedId,
-                    'quantity' => $quantity,
-                    'total_price' => $totalPrice,
-                    'created_at' => Carbon::today()->subDays(rand(0, 550))
-                ]
-            ]);
+            $userId = User::all()->random()->id;
+            $date = Carbon::today()->subDays(rand(0, 550));
+            $random = rand(1,5);
+            for ($j = 1; $j <= $random; $j++) {
+                $seedId = Seed::all()->random()->id;
+                $seedPrice = Seed::where('id', $seedId)->value('price');
+                $quantity = rand(1,10);
+                $totalPrice = $quantity * $seedPrice;
+
+                DB::table('online_payments')->insert([
+                    [
+                        'user_id' => $userId,
+                        'seed_id' => $seedId,
+                        'quantity' => $quantity,
+                        'total_price' => $totalPrice,
+                        'created_at' => $date
+                    ]
+                ]);
+            }
+
         }
     }
 }
