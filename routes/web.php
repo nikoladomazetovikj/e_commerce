@@ -77,6 +77,7 @@ Route::middleware('admin')->group(function () {
             ->name('csv.adminCustomers');
         Route::get('/companiesPayments/export-csv', [CSVController::class, 'adminCompaniesReport'])
             ->name('csv.adminCompanies');
+        Route::get('company-payment/{id}', [PaymentController::class, 'companyAgreement'])->name('reports.adminCompanyShow');
     });
 
 });
