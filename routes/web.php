@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CSVController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reports\AdminCompaniesReports as AdminCompaniesReportsAlias;
 use App\Http\Controllers\Reports\AdminUserReports as AdminUserReportsAlias;
@@ -77,6 +78,15 @@ Route::middleware('admin')->group(function () {
         Route::get('/companiesPayments/export-csv', [CSVController::class, 'adminCompaniesReport'])
             ->name('csv.adminCompanies');
     });
+
+});
+
+
+Route::middleware('manager')->group(function () {
+
+    Route::get('company-payments', [PaymentController::class, 'companyPayments'])->name('companyPayment.index');
+    Route::get('company-payment', [PaymentController::class, 'companyPayment'])->name('companyPayment.create');
+    Route::post('company-payment-add', [PaymentController::class, 'companyPaymentStore'])->name('companyPayment.store');
 
 });
 
