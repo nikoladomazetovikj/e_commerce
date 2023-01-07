@@ -45,7 +45,7 @@ class AuthenticatedSessionController extends Controller
                 break;
 
             default:
-                return redirect(RouteServiceProvider::HOME);
+                return redirect(route('home'));
                 break;
         }
     }
