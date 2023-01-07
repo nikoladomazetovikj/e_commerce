@@ -10,4 +10,11 @@
             {{ __('Companies Payments Report') }}
         </x-nav-link>
     @endif
+
+        @if(\Illuminate\Support\Facades\Auth::user()->role_id == \App\Enums\Role::CUSTOMER->value)
+            <x-nav-link :href="route('reports.invoices')" :active="request()->routeIs('reports.invoices')">
+                {{ __('My Orders') }}
+            </x-nav-link>
+
+        @endif
 </div>

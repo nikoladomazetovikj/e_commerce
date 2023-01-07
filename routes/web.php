@@ -5,6 +5,7 @@ use App\Http\Controllers\CSVController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reports\AdminCompaniesReports as AdminCompaniesReportsAlias;
 use App\Http\Controllers\Reports\AdminUserReports as AdminUserReportsAlias;
+use App\Http\Controllers\Reports\CustomerInvoices as CustomerInvoicesAlias;
 use App\Http\Controllers\SeedController;
 use App\Http\Controllers\SiteDetailsController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile-details', [ProfileController::class, 'updateDetails'])->name('profile.updateDetails');
     Route::post('/profile-details-add', [ProfileController::class, 'storeUserDetails'])->name('profile.storeDetails');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/invoices', CustomerInvoicesAlias::class)->name('reports.invoices');
 });
 
 Route::middleware('content.writer')->group(function () {
