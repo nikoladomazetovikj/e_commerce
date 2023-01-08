@@ -21,6 +21,8 @@ class HomeController extends Controller
                 'group_by_field' => 'created_at',
                 'group_by_period' => 'month',
                 'chart_type' => 'bar',
+                'chart_color' => '0,0,255',
+                'fill' => 'true'
             ];
             $chart1 = new LaravelChart($chart_options);
 
@@ -33,6 +35,8 @@ class HomeController extends Controller
                 'aggregate_function' => 'sum',
                 'aggregate_field' => 'total_price',
                 'chart_type' => 'line',
+                'chart_color' => '255,0,0',
+                'fill' => 'true'
             ];
 
             $chart2 = new LaravelChart($chart_options2);
@@ -47,6 +51,8 @@ class HomeController extends Controller
                 'aggregate_function' => 'sum',
                 'aggregate_field' => 'total_price',
                 'chart_type' => 'line',
+                'chart_color' => '0, 0, 0, 0.5',
+                'fill' => 'true'
             ];
 
             $chart3 = new LaravelChart($chart_options3);
