@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Role;
+use App\Http\Requests\EmployeeRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeesController extends Controller
 {
@@ -29,7 +31,9 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        //
+        $roles = \App\Models\Role::whereNot('id', Role::CUSTOMER->value)->get();
+
+        return view('employees.create', compact('roles'));
     }
 
     /**
@@ -38,9 +42,17 @@ class EmployeesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
-        //
+        User::create([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id
+        ]);
+
+        return redirect()->route('employees.index')->with(['status' => 'Employee created']);
     }
 
     /**
