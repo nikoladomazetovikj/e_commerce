@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Role;
+use App\Models\OnlinePayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class HomeController extends Controller
@@ -53,7 +55,30 @@ class HomeController extends Controller
 
         } else if (Auth::user()->role_id == Role::MANAGER->value) {
 
-          return view('dashboard');
+            $statsBySeeds = DB::table('online_payments', 'op')
+                            ->select('op.seed_id',
+                                    DB::raw('sum(op.quantity) as sum'),
+                                's.name'
+                            )
+                            ->join('seeds as s', 's.id', '=', 'op.seed_id')
+                            ->groupBy('op.seed_id')
+                            ->orderBy('sum', 'desc')
+                            ->limit(1)
+                            ->get()->toArray();
+
+            $lessSailedSeed = DB::table('online_payments', 'op')
+                ->select('op.seed_id',
+                    DB::raw('sum(op.quantity) as sum'),
+                    's.name'
+                )
+                ->join('seeds as s', 's.id', '=', 'op.seed_id')
+                ->groupBy('op.seed_id')
+                ->orderBy('sum', 'asc')
+                ->limit(1)
+                ->get()->toArray();
+
+
+          return view('dashboard', compact('statsBySeeds', 'lessSailedSeed'));
         }
 
         return view('dashboard');

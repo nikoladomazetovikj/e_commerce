@@ -14,7 +14,9 @@
                        @include('dashboard.admin')
                     @endif
 
-
+                       @if(\Illuminate\Support\Facades\Auth::user()->role_id == \App\Enums\Role::MANAGER->value)
+                           @include('dashboard.manager')
+                       @endif
 
             </div>
         </div>
