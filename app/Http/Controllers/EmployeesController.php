@@ -19,7 +19,7 @@ class EmployeesController extends Controller
     {
         $roleIds = [Role::ADMIN->value, Role::MANAGER->value, Role::CONTENT_WRITER->value];
 
-        $allEmployees = User::with('role')->whereIn('role_id', $roleIds)->get();
+        $allEmployees = User::with('role', 'profile')->whereIn('role_id', $roleIds)->get();
 
         return view('employees.index', compact('allEmployees'));
     }
@@ -53,40 +53,6 @@ class EmployeesController extends Controller
         ]);
 
         return redirect()->route('employees.index')->with(['status' => 'Employee created']);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**

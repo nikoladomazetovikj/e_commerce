@@ -15,7 +15,7 @@
                 ROLE
             </th>
             <th scope="col" class="py-3 px-6">
-
+                PHONE
             </th>
             <th scope="col" class="py-3 px-6">
 
@@ -39,9 +39,7 @@
                     {{$employee->role->name}}
                 </td>
                 <td class="py-4 px-6">
-                    <a href="{{route('employees.show', $employee->id)}}">
-                        <x-primary-button>{{ __('View') }}</x-primary-button>
-                    </a>
+                    {{ $employee->profile->phone_number ?? 'NA' }}
                 </td>
                 <td class="py-4 px-6">
                     <x-danger-button
