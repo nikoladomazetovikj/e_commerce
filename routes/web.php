@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CSVController;
+use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reports\AdminCompaniesReports as AdminCompaniesReportsAlias;
@@ -79,6 +80,8 @@ Route::middleware('admin')->group(function () {
             ->name('csv.adminCompanies');
         Route::get('company-payment/{id}', [PaymentController::class, 'companyAgreement'])->name('reports.adminCompanyShow');
     });
+
+    Route::resource('/employees', EmployeesController::class);
 
 });
 
