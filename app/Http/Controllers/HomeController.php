@@ -77,8 +77,34 @@ class HomeController extends Controller
                 ->limit(1)
                 ->get()->toArray();
 
+            $mostSailedSeedThisMonth = DB::table('online_payments', 'op')
+                ->select('op.seed_id',
+                    DB::raw('sum(op.quantity) as sum'),
+                    's.name'
+                )
+                ->join('seeds as s', 's.id', '=', 'op.seed_id')
+                ->whereRaw('MONTH(op.created_at) = MONTH(now())
+                                and YEAR(op.created_at) = YEAR(now())')
+                ->groupBy('op.seed_id')
+                ->orderBy('sum', 'desc')
+                ->limit(1)
+                ->get()->toArray();
 
-          return view('dashboard', compact('statsBySeeds', 'lessSailedSeed'));
+            $lessSailedSeedThisMonth = DB::table('online_payments', 'op')
+                ->select('op.seed_id',
+                    DB::raw('sum(op.quantity) as sum'),
+                    's.name'
+                )
+                ->join('seeds as s', 's.id', '=', 'op.seed_id')
+                ->whereRaw('MONTH(op.created_at) = MONTH(now())
+                                and YEAR(op.created_at) = YEAR(now())')
+                ->groupBy('op.seed_id')
+                ->orderBy('sum', 'asc')
+                ->limit(1)
+                ->get()->toArray();
+
+
+          return view('dashboard', compact('statsBySeeds', 'lessSailedSeed', 'mostSailedSeedThisMonth', 'lessSailedSeedThisMonth'));
         }
 
         return view('dashboard');
