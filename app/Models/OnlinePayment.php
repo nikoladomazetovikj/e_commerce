@@ -19,4 +19,10 @@ class OnlinePayment extends Model
         'total_price',
 
     ];
+
+    public function seeds()
+    {
+        return $this->belongsTo(Seed::class, 'id');
+    }
+
 }
