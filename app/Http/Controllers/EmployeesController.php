@@ -63,6 +63,8 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::where('id', $id)->delete();
+
+        return redirect()->route('employees.index')->with(['status' => 'Employee deleted']);
     }
 }

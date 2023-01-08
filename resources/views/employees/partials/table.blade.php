@@ -59,7 +59,7 @@
     @foreach($allEmployees as $employee)
         <x-modal name="{{$employee->id}}"  focusable >
             <div class="p-6">
-                <form method="post" action="{{ route('seeds.destroy', $employee->id) }}" class="p-6">
+                <form method="post" action="{{ route('employees.destroy', $employee->id) }}" class="p-6">
                     @csrf
                     @method('delete')
 
@@ -67,7 +67,7 @@
                         this employee?</h2>
 
                     <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                        {{ __('Once you delete a employee it will be archived in the database but you can not
+                        {{ __('Once you delete a employee it will be archived in the database and you can not
                         restore it') }}
                     </p>
 
