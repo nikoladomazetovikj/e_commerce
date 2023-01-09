@@ -63,4 +63,21 @@ npm run dev
 php artisan serve
 ```
 
-13. Follow the generated link and start using application
+12. In order to send mails (for testing) create a profile on 
+
+https://mailtrap.io/
+
+13. In `Integrations` select `Laravel 7+` and copy values
+
+14. Paste the values in `.env` file (like in the .env.example)
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME= {generated username}
+MAIL_PASSWORD= {generated password}
+MAIL_ENCRYPTION=tls
+```
+
+15. Follow the generated link and start using application
