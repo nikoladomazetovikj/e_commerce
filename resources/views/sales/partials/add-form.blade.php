@@ -9,7 +9,7 @@
         @csrf
         <div>
             <x-input-label for="seed_id" :value="__('Seed Code')" />
-            <x-text-input id="seed_id" name="name" type="text" class="mt-1 block w-full" :value="old
+            <x-text-input id="seed_id" name="seed_id" type="text" class="mt-1 block w-full" :value="old
             ('seed_id')"
                           autofocus autocomplete="seed_id" />
             <x-input-error class="mt-2" :messages="$errors->get('seed_id')" />
