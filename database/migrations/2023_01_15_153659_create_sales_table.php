@@ -21,6 +21,7 @@ return new class extends Migration
                 ->on('seeds')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->integer('sale');
             $table->date('start')->nullable();
             $table->date('end')->nullable();
             $table->timestamps();
