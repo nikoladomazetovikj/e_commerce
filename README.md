@@ -1,3 +1,6 @@
+$\Large {\text{\color[RGB]{124,252,0}SUPER SEEDS}}$
+
+
 #### To setup the project please follow this instructions:
 
 1. Clone this repo:
