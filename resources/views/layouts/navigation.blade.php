@@ -43,6 +43,16 @@
                     </div>
                 @endif
 
+
+                @if(\Illuminate\Support\Facades\Auth::user()->role_id == \App\Enums\Role::MANAGER->value)
+                    <!-- Employee link -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('sales.index')" :active="request()->routeIs('sales.index')">
+                            {{ __('Sales') }}
+                        </x-nav-link>
+                    </div>
+                @endif
+
                 @if(\Illuminate\Support\Facades\Auth::user()->role_id == \App\Enums\Role::CONTENT_WRITER->value)
                     <!-- Seeds link -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
