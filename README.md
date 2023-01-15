@@ -57,19 +57,33 @@ npm install
 npm run dev
 ```
 
-12. Start application using this command:
+12. Start the scheduler with command:
+
+```
+php artisan schedule:run
+```
+
+or 
+
+```
+php artisan schedule:work
+```
+
+*NOTE: (this scheduler deletes all inactive or expired sales from the database)*
+
+13. Start application using this command:
 
 ```
 php artisan serve
 ```
 
-12. In order to send mails (for testing) create a profile on 
+14. In order to send mails (for testing) create a profile on 
 
 https://mailtrap.io/
 
-13. In `Integrations` select `Laravel 7+` and copy values
+16. In `Integrations` select `Laravel 7+` and copy values
 
-14. Paste the values in `.env` file (like in the .env.example)
+16. Paste the values in `.env` file (like in the .env.example)
 
 ```
 MAIL_MAILER=smtp
@@ -80,4 +94,8 @@ MAIL_PASSWORD= {generated password}
 MAIL_ENCRYPTION=tls
 ```
 
-15. Follow the generated link and start using application
+17. Follow the generated link and start using application (e.g. on localhost)
+
+```
+http://127.0.0.1:8000
+```
