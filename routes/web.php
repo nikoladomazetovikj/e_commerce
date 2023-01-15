@@ -10,6 +10,7 @@ use App\Http\Controllers\Reports\AdminCompaniesReports as AdminCompaniesReportsA
 use App\Http\Controllers\Reports\AdminUserReports as AdminUserReportsAlias;
 use App\Http\Controllers\Reports\CustomerInvoices as CustomerInvoicesAlias;
 use App\Http\Controllers\Reports\CustomerInvoicesDetails as CustomerInvoicesDetailsAlias;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SeedController;
 use App\Http\Controllers\SiteDetailsController;
 use Illuminate\Support\Facades\Route;
@@ -91,7 +92,7 @@ Route::middleware('manager')->group(function () {
     Route::get('company-payment', [PaymentController::class, 'companyPayment'])->name('companyPayment.create');
     Route::post('company-payment-add', [PaymentController::class, 'companyPaymentStore'])->name('companyPayment.store');
     Route::get('company-payment/{id}', [PaymentController::class, 'companyAgreement'])->name('companyPayment.show');
-
+    Route::resource('/sales', SalesController::class);
 
 });
 

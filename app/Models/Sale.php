@@ -10,9 +10,11 @@ class Sale extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function seed()
     {
-        return $this->belongsTo(SeedController::class);
+        return $this->belongsTo(Seed::class);
     }
 
 }

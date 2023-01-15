@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('seed_id')->unsigned()->nullable();
+            $table->bigInteger('seed_id')->unsigned()->unique();
             $table->foreign('seed_id')
                 ->references('id')
                 ->on('seeds')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->integer('sale');
             $table->date('start')->nullable();
             $table->date('end')->nullable();
             $table->timestamps();
