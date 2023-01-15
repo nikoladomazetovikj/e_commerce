@@ -19,6 +19,9 @@ class SeedResource extends JsonResource
             'name' => $this->name,
             'image' => $this->image,
             'category_id' => $this->category_id,
+            'category' => $this->category->friendly_name,
+            'sale_from' => $this->sale?->start,
+            'sale_end' => $this->sale?->end,
             'created_at' => $this->created_at,
             'price' => $this->price,
             'quantity' => $this->quantity
