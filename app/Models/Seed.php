@@ -24,5 +24,10 @@ class Seed extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function sale()
+    {
+        return $this->hasOne(Sale::class);
+    }
+
 
 }
