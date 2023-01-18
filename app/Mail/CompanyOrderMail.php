@@ -40,10 +40,10 @@ class CompanyOrderMail extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
-    public function envelope($managerEmail, $mangerName)
+    public function envelope()
     {
         return new Envelope(
-            from: new Address("{$managerEmail}", "{$mangerName}"),
+            from: new Address("{$this->managerEmail}", "{$this->managerName}"),
             subject: 'Order Shipped',
         );
     }
