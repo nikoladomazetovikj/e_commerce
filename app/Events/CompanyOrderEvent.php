@@ -19,18 +19,26 @@ class CompanyOrderEvent
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($title, $companyName, $managerEmail, $seeds, $managerName,$companyEmail)
     {
-        //
+        $this->title = $title;
+        $this->companyName = $companyName;
+        $this->managerEmail = $managerEmail;
+        $this->seeds = $seeds;
+        $this->managerName = $managerName;
+        $this->companyEmail = $companyEmail;
     }
+
 
     /**
      * Get the channels the event should broadcast on.
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn()
-    {
-        return new PrivateChannel('channel-name');
-    }
+
+    //  As we don't use broadcasts channels we don't need this method
+    //public function broadcastOn()
+    //{
+      //  return new PrivateChannel('channel-name');
+    //}
 }

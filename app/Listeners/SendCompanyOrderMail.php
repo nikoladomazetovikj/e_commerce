@@ -3,8 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\CompanyOrderEvent;
+use App\Mail\CompanyOrderMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
 
 class SendCompanyOrderMail
 {
@@ -26,6 +28,7 @@ class SendCompanyOrderMail
      */
     public function handle(CompanyOrderEvent $event)
     {
-        //
+        Mail::to($event->companyEmail)->send(new CompanyOrderMail($event->title, $event->managerName,
+            $event->managerEmail, $event->seeds, $event->managerName, $event->companyEmail));
     }
 }

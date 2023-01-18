@@ -14,14 +14,25 @@ class CompanyOrderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $title;
+    public $companyName;
+    public $managerEmail;
+    public $seeds;
+    public $managerName;
+    public $companyEmail;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($title, $companyName, $managerEmail, $seeds, $managerName, $companyEmail)
     {
-        // TODO: define variables
+        $this->title = $title;
+        $this->companyName = $companyName;
+        $this->managerEmail = $managerEmail;
+        $this->seeds = $seeds;
+        $this->managerName = $managerName;
+        $this->companyEmail = $companyEmail;
     }
 
     /**
@@ -29,11 +40,10 @@ class CompanyOrderMail extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
-    public function envelope()
+    public function envelope($managerEmail, $mangerName)
     {
         return new Envelope(
-            // TODO: add manager email address
-            from: new Address('jeffrey@example.com', 'Jeffrey Way'),
+            from: new Address("{$managerEmail}", "{$mangerName}"),
             subject: 'Order Shipped',
         );
     }
