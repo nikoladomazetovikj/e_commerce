@@ -42,8 +42,8 @@ class SendSaleEmails implements ShouldQueue
 
         foreach ($sales as $sale) {
             $data = [
-                'start' => $sale['start'],
-                'end' => $sale['end'],
+                'start' => Carbon::parse($sale['start'])->format('d-M-y'),
+                'end' => Carbon::parse($sale['end'])->format('d-M-y'),
                 'sale' => $sale['sale'],
                 'seed' => $sale['seed']['name'],
                 'old_price' => (int)$sale['seed']['price'],
@@ -55,7 +55,6 @@ class SendSaleEmails implements ShouldQueue
 
         $users = User::where('role_id', Role::CUSTOMER->value)->first();
 
-        //dd($users->email);
 
         //foreach ($users as $user) {
             Mail::to($users->email)->send(new SalesMail($data));

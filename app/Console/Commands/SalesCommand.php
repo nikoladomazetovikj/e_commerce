@@ -32,8 +32,6 @@ class SalesCommand extends Command
      */
     public function handle()
     {
-
-
         SendSaleEmails::dispatch();
         return Command::SUCCESS;
     }
