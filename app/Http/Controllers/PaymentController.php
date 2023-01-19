@@ -7,6 +7,7 @@ use App\Http\Requests\CompanyPaymentRequest;
 use App\Models\Company;
 use App\Models\CompanyPayment;
 use App\Models\Seed;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -128,10 +129,19 @@ class PaymentController extends Controller
             'agreement_date' => $request->agreement_date
         ]);
 
+        // by default 20 days
+        $estimatedDelivery = Carbon::parse($companyPayment->agreement_date)->addDays(20)->format('d-M-Y');
+
         $title = "Order # " . $companyPayment->id;
 
-        event(new CompanyOrderEvent($title,$companyName,$request->user()->email,$seed,
-            "{$request->user()->name} {$request->user()->surname}",$request->company_email));
+        event(new CompanyOrderEvent($title,
+            $companyName,
+            $request->user()->email,$seed,
+            "{$request->user()->name} {$request->user()->surname}",
+            $request->company_email,
+            $estimatedDelivery,
+            $companyPayment
+        ));
 
         return redirect()->route('companyPayment.index')->with(['status' => 'Order agreement created']);
     }
