@@ -19,7 +19,8 @@ class CompanyOrderEvent
      *
      * @return void
      */
-    public function __construct($title, $companyName, $managerEmail, $seeds, $managerName,$companyEmail)
+    public function __construct($title, $companyName, $managerEmail, $seeds, $managerName, $companyEmail,
+                                $estimateDelivery, $order)
     {
         $this->title = $title;
         $this->companyName = $companyName;
@@ -27,6 +28,8 @@ class CompanyOrderEvent
         $this->seeds = $seeds;
         $this->managerName = $managerName;
         $this->companyEmail = $companyEmail;
+        $this->estimateDelivery = $estimateDelivery;
+        $this->order = $order;
     }
 
 

@@ -20,12 +20,15 @@ class CompanyOrderMail extends Mailable
     public $seeds;
     public $managerName;
     public $companyEmail;
+    public $estimateDelivery;
+    public $order;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($title, $companyName, $managerEmail, $seeds, $managerName, $companyEmail)
+    public function __construct($title, $companyName, $managerEmail, $seeds, $managerName, $companyEmail,
+                                $estimateDelivery, $order)
     {
         $this->title = $title;
         $this->companyName = $companyName;
@@ -33,6 +36,8 @@ class CompanyOrderMail extends Mailable
         $this->seeds = $seeds;
         $this->managerName = $managerName;
         $this->companyEmail = $companyEmail;
+        $this->estimateDelivery = $estimateDelivery;
+        $this->order = $order;
     }
 
     /**

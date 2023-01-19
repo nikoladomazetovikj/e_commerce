@@ -28,7 +28,15 @@ class SendCompanyOrderMail
      */
     public function handle(CompanyOrderEvent $event)
     {
-        Mail::to($event->companyEmail)->send(new CompanyOrderMail($event->title, $event->managerName,
-            $event->managerEmail, $event->seeds, $event->managerName, $event->companyEmail));
+        Mail::to($event->companyEmail)->send(new CompanyOrderMail(
+            $event->title,
+            $event->companyName,
+            $event->managerEmail,
+            $event->seeds,
+            $event->managerName,
+            $event->companyEmail,
+            $event->estimateDelivery,
+            $event->order
+        ));
     }
 }
