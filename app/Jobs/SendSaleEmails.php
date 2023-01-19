@@ -53,12 +53,13 @@ class SendSaleEmails implements ShouldQueue
             ];
         }
 
-        $users = User::where('role_id', Role::CUSTOMER->value)->first();
+        $users = User::where('role_id', Role::CUSTOMER->value)->get();
 
 
-        //foreach ($users as $user) {
-            Mail::to($users->email)->send(new SalesMail($data));
-        //}
+        foreach ($users as $user) {
+            Mail::to($user->email)->send(new SalesMail($data));
+            sleep(5);
+        }
 
     }
 }
