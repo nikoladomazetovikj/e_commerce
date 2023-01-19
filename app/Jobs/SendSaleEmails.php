@@ -38,28 +38,31 @@ class SendSaleEmails implements ShouldQueue
     {
         $sales = Sale::with('seed.category')->whereDate('start', '<=', Carbon::now()->toDateString())->get()->toArray();
 
-        $data = [];
+        if (!empty($sales)) {
+            $data = [];
 
-        foreach ($sales as $sale) {
-            $data = [
-                'start' => Carbon::parse($sale['start'])->format('d-M-y'),
-                'end' => Carbon::parse($sale['end'])->format('d-M-y'),
-                'sale' => $sale['sale'],
-                'seed' => $sale['seed']['name'],
-                'old_price' => (int)$sale['seed']['price'],
-                'image' => $sale['seed']['image'],
-                'category' => $sale['seed']['category']['friendly_name'],
-                'total_price' => $sale['seed']['price'] - ($sale['seed']['price'] * ($sale['sale'] / 100))
-            ];
+            foreach ($sales as $sale) {
+                $data = [
+                    'start' => Carbon::parse($sale['start'])->format('d-M-y'),
+                    'end' => Carbon::parse($sale['end'])->format('d-M-y'),
+                    'sale' => $sale['sale'],
+                    'seed' => $sale['seed']['name'],
+                    'old_price' => (int)$sale['seed']['price'],
+                    'image' => $sale['seed']['image'],
+                    'category' => $sale['seed']['category']['friendly_name'],
+                    'total_price' => $sale['seed']['price'] - ($sale['seed']['price'] * ($sale['sale'] / 100))
+                ];
+            }
+
+            $users = User::where('role_id', Role::CUSTOMER->value)->get();
+
+
+            foreach ($users as $user) {
+                Mail::to($user->email)->send(new SalesMail($data));
+                sleep(5);
+            }
+
         }
-
-        $users = User::where('role_id', Role::CUSTOMER->value)->get();
-
-
-        foreach ($users as $user) {
-            Mail::to($user->email)->send(new SalesMail($data));
-            sleep(5);
-        }
-
     }
+
 }
