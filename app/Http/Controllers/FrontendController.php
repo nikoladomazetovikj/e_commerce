@@ -26,6 +26,9 @@ class FrontendController extends Controller
 
         $sales = Sale::with('seed')->get();
 
-        return view('frontend.seeds.index', compact('mostSailedSeedThisMonth', 'sales'));
+        $hasSale = count($sales);
+
+
+        return view('frontend.seeds.index', compact('mostSailedSeedThisMonth', 'sales', 'hasSale'));
     }
 }

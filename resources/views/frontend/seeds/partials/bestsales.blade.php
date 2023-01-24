@@ -1,6 +1,9 @@
 <div class="container-fluid my-5">
     <div class="container">
-      @include("frontend.seeds.partials.sales")
+        @if($hasSale > 0)
+            @include("frontend.seeds.partials.sales")
+        @endif
+
         <h3>Top Picks This Month</h3>
         <hr>
         <div class="row row-cols-1 row-cols-md-3 row-cols-sm-1 g-4">
