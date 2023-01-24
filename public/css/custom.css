@@ -8,3 +8,7 @@ a:link {
     height: 50vh !important;
     overflow: hidden !important;
 }
+
+#best-sales-img {
+    height: 350px !important;
+}
