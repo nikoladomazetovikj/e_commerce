@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,6 +24,8 @@ class FrontendController extends Controller
             ->limit(6)
             ->get()->toArray();
 
-        return view('frontend.seeds.index', compact('mostSailedSeedThisMonth'));
+        $sales = Sale::with('seed')->get();
+
+        return view('frontend.seeds.index', compact('mostSailedSeedThisMonth', 'sales'));
     }
 }
