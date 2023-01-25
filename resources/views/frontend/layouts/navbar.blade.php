@@ -13,7 +13,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">About Us</a>
+                        <a class="nav-link active" aria-current="page" href="/aboutUs">About Us</a>
                     </li>
 
                 </ul>
