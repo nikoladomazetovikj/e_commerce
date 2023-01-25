@@ -2,12 +2,16 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CSVController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reports\AdminCompaniesReports as AdminCompaniesReportsAlias;
 use App\Http\Controllers\Reports\AdminUserReports as AdminUserReportsAlias;
 use App\Http\Controllers\Reports\CustomerInvoices as CustomerInvoicesAlias;
 use App\Http\Controllers\Reports\CustomerInvoicesDetails as CustomerInvoicesDetailsAlias;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SeedController;
 use App\Http\Controllers\SiteDetailsController;
 use Illuminate\Support\Facades\Route;
@@ -23,13 +27,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [FrontendController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -80,6 +80,8 @@ Route::middleware('admin')->group(function () {
         Route::get('company-payment/{id}', [PaymentController::class, 'companyAgreement'])->name('reports.adminCompanyShow');
     });
 
+    Route::resource('/employees', EmployeesController::class);
+
 });
 
 
@@ -89,7 +91,7 @@ Route::middleware('manager')->group(function () {
     Route::get('company-payment', [PaymentController::class, 'companyPayment'])->name('companyPayment.create');
     Route::post('company-payment-add', [PaymentController::class, 'companyPaymentStore'])->name('companyPayment.store');
     Route::get('company-payment/{id}', [PaymentController::class, 'companyAgreement'])->name('companyPayment.show');
-
+    Route::resource('/sales', SalesController::class);
 
 });
 

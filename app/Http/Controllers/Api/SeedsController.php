@@ -18,7 +18,7 @@ class SeedsController extends Controller
      */
     public function index()
     {
-        $allSeeds = Seed::paginate(20);
+        $allSeeds = Seed::with('category', 'sale')->paginate(5);
 
         return SeedResource::collection($allSeeds);
     }

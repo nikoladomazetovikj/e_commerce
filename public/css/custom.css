@@ -1,0 +1,18 @@
+a:link {
+    text-decoration: none !important;
+}
+
+#carouselExampleDark .carousel-item img {
+    object-fit: cover !important;
+    object-position: center !important;
+    height: 50vh !important;
+    overflow: hidden !important;
+}
+
+#best-sales-img {
+    height: 350px !important;
+}
+
+#sale-card-img {
+    height: 120px !important;
+}

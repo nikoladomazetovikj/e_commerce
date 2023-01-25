@@ -2,8 +2,12 @@
 
 namespace App\Console;
 
+use App\Console\Commands\SalesCommand;
+use App\Models\Sale;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,7 +19,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // delete expired sales
+
+        $schedule->call(function () {
+            Sale::where('end','<',Carbon::now()->toDateString())->delete();
+        })->daily();
+
+        $schedule->command(SalesCommand::class)->weeklyOn(1, '0:00');
     }
 
     /**
