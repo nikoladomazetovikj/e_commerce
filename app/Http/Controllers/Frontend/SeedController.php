@@ -43,6 +43,19 @@ class SeedController extends Controller
     }
 
 
+    public function searched(Request $request)
+    {
+        $name = $request->search;
+
+        $result = Seed::where('name', $name)->value('id');
+
+        if ($result == null) {
+            return view('frontend.seeds.errors.not-found');
+        }
+
+        return redirect()->route('frontend.seed.id', $result);
+    }
+
 
     /**
      * Update the specified resource in storage.
