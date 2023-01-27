@@ -90,19 +90,36 @@
 
             var ele = $(this);
 
-            if(confirm("Do you really want to remove?")) {
-                $.ajax({
-                    url: '{{ route('remove_from_cart') }}',
-                    method: "DELETE",
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        id: ele.parents("tr").attr("data-id")
-                    },
-                    success: function (response) {
-                        window.location.reload();
-                    }
-                });
-            }
+            Swal.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete product!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '{{ route('remove_from_cart') }}',
+                        method: "DELETE",
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            id: ele.parents("tr").attr("data-id")
+                        },
+                        success: function (response) {
+                            setTimeout(1000);
+                            Swal.fire(
+                                'Deleted!',
+                                'Your product has been deleted.',
+                                'success'
+                            )
+                            window.location.reload();
+                        }
+                    });
+
+                }
+            })
+
         });
 
     </script>
