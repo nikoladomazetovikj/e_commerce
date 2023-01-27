@@ -19,6 +19,20 @@
 <body>
 @include('frontend.layouts.navbar')
 
+<div class="container mt-5">
+   <div class="row">
+       <div class="col">
+           @if(session('success'))
+               <div class="alert alert-success alert-dismissible fade show col-lg-6 col-md-12 mx-auto">
+                   {{ session('success') }}
+                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+
+           @endif
+       </div>
+   </div>
+</div>
+
 @yield('content')
 
 @include('frontend.layouts.footer')
@@ -39,6 +53,19 @@
                 return process(data);
             });
         }
+    });
+</script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        window.setTimeout(function() {
+            $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+                $(this).remove();
+            });
+        }, 1500);
+
     });
 </script>
 
