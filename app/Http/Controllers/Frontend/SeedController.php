@@ -33,6 +33,16 @@ class SeedController extends Controller
     }
 
 
+    public function search(Request $request)
+    {
+        $name = $request->search;
+
+        $result = Seed::where('name', 'like', "%{$name}%")->get();
+
+        return response()->json($result);
+    }
+
+
 
     /**
      * Update the specified resource in storage.

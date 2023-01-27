@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/products/{id}', [FrontendSeedController::class, 'index'])->name('frontend.seed.id');
 Route::get('/aboutUs', [AboutUsController::class, 'index'])->name('aboutUs');
+Route::get('/search', [FrontendSeedController::class, 'search'])->name('search');
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
