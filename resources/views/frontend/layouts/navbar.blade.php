@@ -22,8 +22,14 @@
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            id="search" name="search">
                 </form>
-                <a href="{{ route('cart') }}" class="text-warning">
-                    <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+
+                <a href="{{ route('cart') }}" class="text-warning ">
+                    <button type="button" class="btn  position-relative">
+                        <i class="fa-sharp fa-solid fa-cart-shopping text-warning"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                       {{ count((array) session('cart')) }}
+                    </span>
+                    </button>
                 </a>
                 <span class="navbar-text">
                         @if(Auth::check())
