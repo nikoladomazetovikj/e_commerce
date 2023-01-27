@@ -21,18 +21,6 @@ class SeedController extends Controller
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
     public function search(Request $request)
     {
         $name = $request->search;
@@ -55,18 +43,56 @@ class SeedController extends Controller
 
         return redirect()->route('frontend.seed.id', $result);
     }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function cart()
     {
-        //
+        return view('frontend.seeds.cart.cart');
+    }
+    public function addToCart($id)
+    {
+        $product = Seed::with('sale')->findOrFail($id);
+
+        $cart = session()->get('cart', []);
+
+        $price = $product->price;
+        if ($product->sale != null) {
+            $price = $product->price - ($product->price * ($product->sale->sale / 100));
+        }
+
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        }  else {
+            $cart[$id] = [
+                "name" => $product->name,
+                "image" => $product->image,
+                "price" => $price,
+                "quantity" => 1
+            ];
+        }
+
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product add to cart successfully!');
+    }
+
+    public function update(Request $request)
+    {
+        if($request->id && $request->quantity){
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart successfully updated!');
+        }
+    }
+
+    public function remove(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Product successfully removed!');
+        }
     }
 
 }
