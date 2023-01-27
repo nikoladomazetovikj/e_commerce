@@ -34,6 +34,7 @@ Route::get('/products/{id}', [FrontendSeedController::class, 'index'])->name('fr
 Route::get('/aboutUs', [AboutUsController::class, 'index'])->name('aboutUs');
 Route::get('/search', [FrontendSeedController::class, 'search'])->name('search');
 Route::post('/searched', [FrontendSeedController::class, 'searched'])->name('searched');
+Route::get('/cart', [FrontendSeedController::class, 'cart'])->name('cart');
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
@@ -45,6 +46,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/invoices', CustomerInvoicesAlias::class)->name('reports.invoices');
     Route::get('/invoices/{id}', CustomerInvoicesDetailsAlias::class)->name('reports.invoicesData');
+
+    Route::get('add-to-cart/{id}', [FrontendSeedController::class, 'addToCart'])->name('add_to_cart');
+    Route::patch('update-cart', [FrontendSeedController::class, 'update'])->name('update_cart');
+    Route::delete('remove-from-cart', [FrontendSeedController::class, 'remove'])->name('remove_from_cart');
 });
 
 Route::middleware('content.writer')->group(function () {
@@ -100,5 +105,8 @@ Route::middleware('manager')->group(function () {
     Route::resource('/sales', SalesController::class);
 
 });
+
+
+
 
 require __DIR__.'/auth.php';
