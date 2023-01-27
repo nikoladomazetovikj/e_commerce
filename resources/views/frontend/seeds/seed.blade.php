@@ -9,7 +9,7 @@
                 <img src="{{asset('images/' . $s->image)}}" class="img-fluid">
                <div class="row">
                    <div class="col-6">
-                       <a href="#">
+                       <a href="{{route('add_to_cart', $s->id)}}">
                            <button type="button" class="btn btn-success mt-3">Add to Cart</button>
                        </a>
                    </div>

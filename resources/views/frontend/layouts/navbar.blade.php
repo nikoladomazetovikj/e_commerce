@@ -21,8 +21,10 @@
                     @csrf
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                            id="search" name="search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+                <a href="{{ route('cart') }}" class="text-warning">
+                    <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                </a>
                 <span class="navbar-text">
                         @if(Auth::check())
                         <a class="mx-3"  href="/dashboard">Dashboard</a>

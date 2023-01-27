@@ -16,3 +16,7 @@ a:link {
 #sale-card-img {
     height: 120px !important;
 }
+
+table * {
+    white-space: nowrap;
+}
