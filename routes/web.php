@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\SeedController as FrontendSeedController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Payment\StripeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reports\AdminCompaniesReports as AdminCompaniesReportsAlias;
@@ -35,6 +36,7 @@ Route::get('/aboutUs', [AboutUsController::class, 'index'])->name('aboutUs');
 Route::get('/search', [FrontendSeedController::class, 'search'])->name('search');
 Route::post('/searched', [FrontendSeedController::class, 'searched'])->name('searched');
 Route::get('/cart', [FrontendSeedController::class, 'cart'])->name('cart');
+Route::get('/billing-portal', [StripeController::class, 'billing']);
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
