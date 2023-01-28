@@ -12,7 +12,7 @@ class CSVController extends Controller
         $fileName = 'customers_payments.csv';
 
         $data = DB::table('online_payments', 'op')
-            ->select('op.id',
+            ->select('op.order_id',
                 's.name as seed_name',
                 'c.friendly_name as category_name',
                 'op.quantity',
@@ -38,7 +38,7 @@ class CSVController extends Controller
             fputcsv($file, $columns);
 
             foreach ($data as $d) {
-                $row['Order N.']  = $d->id;
+                $row['Order N.']  = $d->order_id;
                 $row['Seed'] = $d->seed_name;
                 $row['Category'] = $d->category_name;
                 $row['Quantity'] = $d->quantity;
