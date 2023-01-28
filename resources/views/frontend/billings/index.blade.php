@@ -10,7 +10,7 @@
                             Proceed Payment
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="" class="card-form mt-3 mb-3">
+                            <form method="POST" action="{{route('pay')}}" class="card-form mt-3 mb-3">
                                 @csrf
                                 <div class="row mb-3">
                                     <label for="card_name" class="col-sm-2 col-form-label form-label">Card Holder</label>

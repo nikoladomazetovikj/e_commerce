@@ -36,7 +36,7 @@ Route::get('/aboutUs', [AboutUsController::class, 'index'])->name('aboutUs');
 Route::get('/search', [FrontendSeedController::class, 'search'])->name('search');
 Route::post('/searched', [FrontendSeedController::class, 'searched'])->name('searched');
 Route::get('/cart', [FrontendSeedController::class, 'cart'])->name('cart');
-Route::get('/billing-portal', [StripeController::class, 'billing']);
+
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
     Route::get('add-to-cart/{id}', [FrontendSeedController::class, 'addToCart'])->name('add_to_cart');
     Route::patch('update-cart', [FrontendSeedController::class, 'update'])->name('update_cart');
     Route::delete('remove-from-cart', [FrontendSeedController::class, 'remove'])->name('remove_from_cart');
+    Route::get('/billing-portal', [StripeController::class, 'billing']);
+    Route::post('/pay', [StripeController::class, 'proceedPayment'])->name('pay');
 });
 
 Route::middleware('content.writer')->group(function () {
