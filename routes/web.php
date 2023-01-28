@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile-details-add', [ProfileController::class, 'storeUserDetails'])->name('profile.storeDetails');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/invoices', CustomerInvoicesAlias::class)->name('reports.invoices');
-    Route::get('/invoices/{id}', CustomerInvoicesDetailsAlias::class)->name('reports.invoicesData');
+    Route::get('/invoices/{order_id}', CustomerInvoicesDetailsAlias::class)->name('reports.invoicesData');
 
     Route::get('add-to-cart/{id}', [FrontendSeedController::class, 'addToCart'])->name('add_to_cart');
     Route::patch('update-cart', [FrontendSeedController::class, 'update'])->name('update_cart');

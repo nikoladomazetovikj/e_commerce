@@ -16,22 +16,14 @@ class CustomerInvoices extends Controller
      */
     public function __invoke(Request $request)
     {
-        $invoicesIds = DB::table('online_payments')->select('id')
-            ->where('user_id', $request->user()->id)
-                    ->groupBy('created_at')
-                    ->pluck('id')->toArray();
-
 
         $query = DB::table('online_payments', 'op')
-            ->select('op.id',
+            ->select('op.order_id',
                 DB::raw('DATE(op.created_at) AS date'),
-                DB::raw('(select sum(op.total_price)
-                                from online_payments op
-                                where op.user_id = '. $request->user()->id . '
-                                and DATE (op.created_at)= date
-                                ) as total_price')
+                DB::raw('sum(op.total_price) as total_price')
             )
-            ->whereIn('op.id', $invoicesIds)
+            ->where('op.user_id', $request->user()->id)
+            ->groupBy('op.order_id')
             ->orderBy('date', 'desc')
             ->paginate(5);
 

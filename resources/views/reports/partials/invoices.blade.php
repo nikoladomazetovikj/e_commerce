@@ -21,7 +21,7 @@
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$q->id}}
+                    {{$q->order_id}}
                 </th>
 
                 <td class="py-4 px-6">
@@ -31,7 +31,7 @@
                     {{$q->date}}
                 </td>
                 <td class="py-4 px-6">
-                    <a href="{{route('reports.invoicesData', $q->id)}}">
+                    <a href="{{route('reports.invoicesData', $q->order_id)}}">
                         <x-secondary-button>{{ __('View') }}</x-secondary-button>
                     </a>
                 </td>
