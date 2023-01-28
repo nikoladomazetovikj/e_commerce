@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\CompanyOrderEvent;
+use App\Events\SendOrderNotificationEvent;
+use App\Listeners\OrderNotificationSend;
 use App\Listeners\SendCompanyOrderMail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -23,6 +25,10 @@ class EventServiceProvider extends ServiceProvider
 
         CompanyOrderEvent::class => [
             SendCompanyOrderMail::class
+        ],
+
+        SendOrderNotificationEvent::class => [
+            OrderNotificationSend::class
         ]
     ];
 

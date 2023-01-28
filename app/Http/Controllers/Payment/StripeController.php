@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Payment;
 
+use App\Events\SendOrderNotificationEvent;
 use App\Http\Controllers\Controller;
 use App\Models\OnlinePayment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Stripe\Event;
 use Symfony\Component\Uid\Ulid;
 
 class StripeController extends Controller
@@ -41,6 +43,7 @@ class StripeController extends Controller
 
         OnlinePayment::insert($data);
 
+        event(new SendOrderNotificationEvent($request->user(), $orderId));
         $request->session()->forget('cart');
 
         return redirect()->route('home')->with('success', 'Payment successfully completed');
