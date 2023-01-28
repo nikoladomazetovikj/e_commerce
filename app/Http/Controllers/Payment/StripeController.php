@@ -14,6 +14,13 @@ class StripeController extends Controller
 {
     public function billing(Request $request)
     {
+        // check if cart is empty
+
+        $cart = $request->session()->get('cart');
+        if (empty($cart)) {
+           abort(404);
+        }
+
         $user = $request->user();
         return view('frontend.billings.index', [
             'intent' => $user->createSetupIntent()
