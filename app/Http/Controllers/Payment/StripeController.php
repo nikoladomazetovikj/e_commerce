@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\OnlinePayment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Symfony\Component\Uid\Ulid;
 
 class StripeController extends Controller
 {
@@ -26,8 +27,10 @@ class StripeController extends Controller
 
         $data = [];
 
+        $orderId = (new Ulid)->toBase32();
         foreach ($products as $id => $value) {
             $data[] = [
+                'order_id' => $orderId,
                 'seed_id' => $id,
                 'user_id' => $request->user()->id,
                 'quantity' => (int) $value['quantity'],
