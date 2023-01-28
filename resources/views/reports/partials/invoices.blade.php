@@ -25,7 +25,7 @@
                 </th>
 
                 <td class="py-4 px-6">
-                    {{$q->total_price}}
+                    {{$q->total_price}} $
                 </td>
                 <td class="py-4 px-6">
                     {{$q->date}}

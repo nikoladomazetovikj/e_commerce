@@ -36,7 +36,7 @@
                     {{$seed->name}}
                 </td>
                 <td class="py-4 px-6">
-                    {{$seed->price}}
+                    {{$seed->price}} $
                 </td>
                 <td class="py-4 px-6">
                     {{$seed->category->friendly_name}}

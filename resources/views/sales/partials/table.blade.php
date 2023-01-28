@@ -25,7 +25,7 @@
                     {{$seed->seed->name}}
                 </td>
                 <td class="py-4 px-6">
-                    {{ $seed->seed->price - ($seed->seed->price * ($seed->sale / 100))}}
+                    {{ $seed->seed->price - ($seed->seed->price * ($seed->sale / 100))}} $
                 </td>
             </tr>
         @endforeach
