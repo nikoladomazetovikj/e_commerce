@@ -4,21 +4,34 @@
     <div class="container-fluid my-5">
         <div class="container">
             <div class="row">
-                <div class="mx-auto col-6">
-                    <form method="POST" action="" class="card-form mt-3 mb-3">
-                        @csrf
-                        <input type="hidden" name="payment_method" class="payment-method">
-                        <input class="StripeElement mb-3" name="card_holder_name" placeholder="Card holder name" required>
-                        <div class="col-lg-12 col-md-6">
-                            <div id="card-element"></div>
+                <div class="mx-auto col-lg-8 col-md-7 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Proceed Payment
                         </div>
-                        <div id="card-errors" role="alert"></div>
-                        <div class="form-group mt-3">
-                            <button type="submit" class="btn btn-primary pay">
-                                Purchase
-                            </button>
+                        <div class="card-body">
+                            <form method="POST" action="" class="card-form mt-3 mb-3">
+                                @csrf
+                                <div class="row mb-3">
+                                    <label for="card_name" class="col-sm-2 col-form-label form-label">Card Holder</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="payment_method" class="payment-method">
+                                        <input type="text" class="form-control" name="card_holder_name" id="card_name" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div id="card-element"></div>
+                                </div>
+                                <div id="card-errors" role="alert"></div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="btn btn-success pay">
+                                        Pay
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+
                 </div>
             </div>
         </div>
