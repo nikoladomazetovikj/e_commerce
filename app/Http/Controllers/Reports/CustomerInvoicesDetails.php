@@ -17,6 +17,15 @@ class CustomerInvoicesDetails extends Controller
      */
     public function __invoke(Request $request, $order_id)
     {
+
+        // check if the order is for the requested user
+
+        $checkId = OnlinePayment::where('order_id', $order_id)->value('user_id');
+
+        if ($request->user()->id != (int) $checkId) {
+            abort(404);
+        }
+
         $query = DB::table('online_payments', 'op')
             ->select(
                 's.name as seed_name',
