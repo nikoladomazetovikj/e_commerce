@@ -22,5 +22,29 @@ class SiteData
        return DB::table('site_details')->get();
     }
 
-    // TODO: add more functions
+    public static function getAdress()
+    {
+        return DB::table('site_details')->value('address');
+    }
+
+    public static function getPhone()
+    {
+        return DB::table('site_details')->value('phone_number');
+    }
+
+    public static function getFacebook()
+    {
+        return DB::table('site_details')->value('facebook');
+    }
+
+    public static function getInstagram()
+    {
+        return DB::table('site_details')->value('instagram');
+    }
+
+    public static function getTwitter()
+    {
+        return DB::table('site_details')->value('twitter');
+    }
+
 }
