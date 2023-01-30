@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Rating;
 use App\Models\Seed;
 use Illuminate\Http\Request;
@@ -31,8 +32,12 @@ class SeedController extends Controller
 
         $totalUsersRatings = Rating::where('seed_id', $id)->count('user_id');
 
+        $totalComments = Comment::where('seed_id', $id)->count();
 
-        return view('frontend.seeds.seed', compact('seed', 'ratings', 'avgRating', 'totalUsersRatings'));
+        $comments = Comment::with('users')->where('seed_id', $id)->orderBy('created_at', 'desc')->get();
+
+
+        return view('frontend.seeds.seed', compact('seed', 'ratings', 'avgRating', 'totalUsersRatings', 'totalComments', 'comments'));
     }
 
 
