@@ -34,7 +34,7 @@ class SeedController extends Controller
 
         $totalComments = Comment::where('seed_id', $id)->count();
 
-        $comments = Comment::with('users')->where('seed_id', $id)->orderBy('created_at', 'desc')->get();
+        $comments = Comment::with('users')->where('seed_id', $id)->orderBy('created_at', 'desc')->paginate(10);
 
 
         return view('frontend.seeds.seed', compact('seed', 'ratings', 'avgRating', 'totalUsersRatings', 'totalComments', 'comments'));

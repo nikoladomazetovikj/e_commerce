@@ -124,9 +124,46 @@
                 <p>{{$s->category->friendly_name}}</p>
                 <hr>
                 {!! $s->description !!}
+                <hr>
+                <div class="row">
+                    <div class="col-6 text-start">
+                        <p>Comments</p>
+                    </div>
+                    <div class="col-6 text-end">
+                        <p>{{$totalComments}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                      @foreach($comments as $comment)
+                        <div class="col-8 mx-auto my-2">
+                           <div class="card">
+                               <div class="card-header">
+                                   <div class="row">
+                                       <div class="col-6 text-start">
+                                           {{$comment->users->name}} {{$comment->users->surname}}
+                                       </div>
+                                       <div class="col-6 text-end">
+                                           {{Carbon\Carbon::parse($comment->created_at)->format('d/m/Y')}}
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="card-body">
+                                   <p class="card-text">{{$comment->comment}}</p>
+                               </div>
+                           </div>
+                        </div>
+                      @endforeach
+                        <div class="row">
+                            <div class="col-6 mx-auto">
+                                {{ $comments->links() }}
+                            </div>
+                        </div>
+                </div>
             </div>
             @endforeach
         </div>
     </div>
 </div>
 @endsection
+
