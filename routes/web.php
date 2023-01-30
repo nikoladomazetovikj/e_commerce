@@ -54,6 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('remove-from-cart', [FrontendSeedController::class, 'remove'])->name('remove_from_cart');
     Route::get('/billing-portal', [StripeController::class, 'billing']);
     Route::post('/pay', [StripeController::class, 'proceedPayment'])->name('pay');
+
+    Route::post('/seeds/{seedId}/comment', [FrontendSeedController::class, 'comment'])->name('comment');
 });
 
 Route::middleware('content.writer')->group(function () {

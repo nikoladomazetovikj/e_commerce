@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Rating;
 use App\Models\Seed;
@@ -113,6 +114,19 @@ class SeedController extends Controller
             }
             session()->flash('success', 'Product successfully removed!');
         }
+    }
+
+    public function comment(CommentRequest $request, $seedId)
+    {
+        $user = $request->user()->id;
+
+        Comment::create([
+            'user_id' => $user,
+            'seed_id' => $seedId,
+            'comment' => $request->comment
+        ]);
+
+        return redirect()->back()->with('success', 'Comment added successfully!');
     }
 
 }
