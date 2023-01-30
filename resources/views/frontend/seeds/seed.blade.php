@@ -135,12 +135,26 @@
                     <div>
                         <a class="btn btn-dark" data-bs-toggle="collapse" href="#comments" role="button"
                            aria-expanded="false" aria-controls="comments">
-                            Show Comments
+                            Add Comment
                         </a>
+                    </div>
+
+                    <div class="mt-2 col-md-8 col-12 collapse" id="comments">
+                        <form action="{{route('comment', $s->id)}}" method="POST" class="form">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="comment" class="form-label">Comment</label>
+                                <textarea class="form-control" id="comment" rows="1" name="comment"></textarea>
+                                @if ($errors->has('comment'))
+                                    <span class="text-danger text-left">{{ $errors->first('comment') }}</span>
+                                @endif
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
                     </div>
                 </div>
                 <hr>
-                <div class="row collapse" id="comments">
+                <div class="row" >
                       @foreach($comments as $comment)
                         <div class="col-md-8 col-12 mx-auto my-2">
                            <div class="card">
