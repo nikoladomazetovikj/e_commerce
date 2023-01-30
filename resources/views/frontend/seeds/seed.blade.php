@@ -130,11 +130,17 @@
                         <p>Comments</p>
                     </div>
                     <div class="col-6 text-end">
-                        <p>{{$totalComments}}</p>
+                        <p> <span><i class="fa-solid fa-comment"></i></span> {{$totalComments}}</p>
+                    </div>
+                    <div>
+                        <a class="btn btn-dark" data-bs-toggle="collapse" href="#comments" role="button"
+                           aria-expanded="false" aria-controls="comments">
+                            Show Comments
+                        </a>
                     </div>
                 </div>
                 <hr>
-                <div class="row">
+                <div class="row collapse" id="comments">
                       @foreach($comments as $comment)
                         <div class="col-md-8 col-12 mx-auto my-2">
                            <div class="card">
