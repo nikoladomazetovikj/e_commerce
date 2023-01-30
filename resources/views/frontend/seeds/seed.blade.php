@@ -23,6 +23,100 @@
                            <p class="text-end">{{$s->price}} $</p>
                        @endif
                    </div>
+                   <div class="card text-bg-secondary my-3" style="max-width: 18rem;">
+                       <div class="card-header">
+                           <div class="row">
+                               <div class="col-6 text-start">
+                                   Ratings
+                               </div>
+                               <div class="col-6 text-end">
+                                   Average: {{$avgRating}}
+                               </div>
+                           </div>
+                       </div>
+                       <div class="card-body">
+                           <div class="row">
+                               <div class="col-3">
+                                   <p class="text-start">{{$ratings[5]}}</p>
+                               </div>
+                               <div class="col-9">
+                                   <p class="text-end">
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                   </p>
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-3">
+                                   <p class="text-start">{{$ratings[4]}}</p>
+                               </div>
+                               <div class="col-9">
+                                   <p class="text-end">
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star "></i>
+                                   </p>
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-3">
+                                   <p class="text-start">{{$ratings[3]}}</p>
+                               </div>
+                               <div class="col-9">
+                                   <p class="text-end">
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star "></i>
+                                       <i class="fa-solid fa-star"></i>
+                                   </p>
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-3">
+                                   <p class="text-start">{{$ratings[2]}}</p>
+                               </div>
+                               <div class="col-9">
+                                   <p class="text-end">
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star "></i>
+                                       <i class="fa-solid fa-star "></i>
+                                       <i class="fa-solid fa-star "></i>
+                                   </p>
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-3">
+                                   <p class="text-start">{{$ratings[1]}}</p>
+                               </div>
+                               <div class="col-9">
+                                   <p class="text-end">
+                                       <i class="fa-solid fa-star text-warning"></i>
+                                       <i class="fa-solid fa-star"></i>
+                                       <i class="fa-solid fa-star "></i>
+                                       <i class="fa-solid fa-star "></i>
+                                       <i class="fa-solid fa-star "></i>
+                                   </p>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="card-footer">
+                            <div class="row">
+                                <div class="col-6">
+                                    Total: {{$totalUsersRatings}}
+                                </div>
+                                <div class="col-6">
+                                    Add Rating
+                                </div>
+                            </div>
+                       </div>
+                   </div>
                </div>
             </div>
             <div class="col-md-9">
