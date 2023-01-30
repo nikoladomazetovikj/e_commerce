@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->text('comment');
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -28,7 +27,7 @@ return new class extends Migration
                 ->on('seeds')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->timestamps();
+            $table->tinyInteger('review_score');
         });
     }
 
@@ -39,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('ratings');
     }
 };
