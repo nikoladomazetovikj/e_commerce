@@ -26,7 +26,7 @@ class RatingSeeder extends Seeder
             $random = rand(1,5);
             for ($j = 1; $j <= $random; $j++) {
                 $seedId = Seed::all()->random()->id;
-                $score = rand(1,10);
+                $score = rand(1,5);
 
                 $checkIfExist = Rating::where('user_id', $userId)->where('seed_id', $seedId)->count();
 
