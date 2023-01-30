@@ -155,8 +155,8 @@
                         </div>
                       @endforeach
                         <div class="row">
-                            <div class="col-6 mx-auto">
-                                {{ $comments->links() }}
+                            <div class="col-6 mx-auto my-2">
+                                {{ $comments->links('vendor.pagination.bootstrap-5') }}
                             </div>
                         </div>
                 </div>
