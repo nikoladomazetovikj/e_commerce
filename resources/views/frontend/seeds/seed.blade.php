@@ -136,7 +136,7 @@
                 <hr>
                 <div class="row">
                       @foreach($comments as $comment)
-                        <div class="col-8 mx-auto my-2">
+                        <div class="col-md-8 col-12 mx-auto my-2">
                            <div class="card">
                                <div class="card-header">
                                    <div class="row">
