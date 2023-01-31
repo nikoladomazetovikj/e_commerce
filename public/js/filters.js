@@ -1,4 +1,5 @@
-const path = 'http://127.0.0.1:8000/images/';
+const path = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/images/';
+
 $(function () {
 
     $("#all").prop("checked", true);
