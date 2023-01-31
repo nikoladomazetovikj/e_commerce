@@ -49,7 +49,6 @@ function products(data) {
 
 
 function fetchProducts(value) {
-    console.log(value)
     $("#pagination").twbsPagination("destroy");
 
     $.ajax({
