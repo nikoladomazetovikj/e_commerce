@@ -61,6 +61,10 @@ table * {
     object-fit: cover;
 }
 
+.menu-responsive {
+    display: none;
+}
+
 @media only screen and (max-width: 800px) {
     .card-img-top-custom {
         width: 100%;
@@ -68,4 +72,26 @@ table * {
         object-fit: cover;
     }
 
+}
+
+@media (max-width: 620px) {
+    .menu {
+        display: none;
+    }
+    .menu-responsive {
+        display: block;
+    }
+    .card-img-top-custom {
+        width: 100%;
+        height: 35vh;
+        object-fit: cover;
+    }
+    .pagination {
+        display: -ms-flexbox;
+        flex-wrap: wrap;
+        display: flex;
+        padding-left: 0;
+        list-style: none;
+        border-radius: 0.25rem;
+    }
 }
