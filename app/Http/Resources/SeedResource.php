@@ -24,7 +24,8 @@ class SeedResource extends JsonResource
             'sale_end' => $this->sale?->end,
             'created_at' => $this->created_at,
             'price' => $this->price,
-            'quantity' => $this->quantity
+            'quantity' => $this->quantity,
+            'rate' => $this->avgRating()
         ];
     }
 }

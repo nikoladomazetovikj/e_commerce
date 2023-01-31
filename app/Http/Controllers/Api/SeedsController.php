@@ -16,11 +16,25 @@ class SeedsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $allSeeds = Seed::with('category', 'sale')->paginate(5);
+        $category = $request->category;
 
-        return SeedResource::collection($allSeeds);
+        if ($category == 'all') {
+
+            $seeds = Seed::with('category', 'sale')->paginate(7);
+
+            return SeedResource::collection($seeds);
+
+        } else {
+
+            $seeds = Seed::with('category', 'sale')
+                ->where('category_id', $category)
+                ->paginate(7);
+
+            return SeedResource::collection($seeds);
+        }
+
     }
 
 
