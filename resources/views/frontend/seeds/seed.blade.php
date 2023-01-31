@@ -112,7 +112,21 @@
                                     Total: {{$totalUsersRatings}}
                                 </div>
                                 <div class="col-6">
-                                    Add Rating
+                                    <a class="text-white" data-bs-toggle="collapse" href="#ratings" role="button"
+                                       aria-expanded="false" aria-controls="ratings">
+                                        Add Rating
+                                    </a>
+                                </div>
+
+                                <div class="mt-2 col-md-8 col-12 collapse" id="ratings">
+                                    <form action="{{route('rate', $s->id)}}" method="POST" class="form">
+                                        @csrf
+                                        <div class="mb-3 col-6 mx-auto">
+                                            <input type="number" min="1" max="5" name="review_score"
+                                                   class="form-control bg-white">
+                                        </div>
+                                        <button type="submit" class="btn btn-white text-white">Rate</button>
+                                    </form>
                                 </div>
                             </div>
                        </div>
