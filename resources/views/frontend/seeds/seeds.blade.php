@@ -4,12 +4,12 @@
  <div class="container-fluid mb-5">
      <div class="container">
          <div class="row">
-             <div class="col-3">
+             <div class="col-lg-3 col-md-2">
                  <div class="row">
-                     <div class="col-12">
+                     <div class="col-lg-12 col-md-8">
                              <h5 class="">Categories</h5>
                              <form action="" id="category">
-                                 <div class="col-lg-4" id="menu">
+                                 <div class="col-lg-4 col-md-2" id="menu">
                                      <input type="radio" class="btn-check" id="all" autocomplete="off" name="category" value="all">
                                      <label class="font-size-skills btn-block m-1 btn btn-outline-success rounded text-wrap filter-width p-1" for="all">All</label>
                                      @foreach($categories as $category)
@@ -24,7 +24,7 @@
                      </div>
                  </div>
              </div>
-             <div class="col-9 border border-top-0 border-end-0 border-bottom-0">
+             <div class="col-lg-9 col-md-10 border border-top-0 border-end-0 border-bottom-0">
                 <div class="row" id="products">
 
                 </div>

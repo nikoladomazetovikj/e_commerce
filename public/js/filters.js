@@ -17,7 +17,7 @@ function products(data) {
     let card = ``;
     for (let i = 0; i < data.data.length; i++) {
 
-        card += `<div class="col-4 cards my-2">
+        card += `<div class="col-lg-4 col-md-6 cards my-2">
                     <div class="card shadow h-100" >
                             <img src="${path + data.data[i].image}" class="card-img-top-custom" alt="...">
                             <div class="card-body">
