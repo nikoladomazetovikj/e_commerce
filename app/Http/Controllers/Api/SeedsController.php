@@ -22,7 +22,7 @@ class SeedsController extends Controller
 
         if ($category == 'all') {
 
-            $seeds = Seed::with('category', 'sale')->paginate(7);
+            $seeds = Seed::with('category', 'sale')->paginate(6);
 
             return SeedResource::collection($seeds);
 
@@ -30,7 +30,7 @@ class SeedsController extends Controller
 
             $seeds = Seed::with('category', 'sale')
                 ->where('category_id', $category)
-                ->paginate(7);
+                ->paginate(6);
 
             return SeedResource::collection($seeds);
         }
