@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/pay', [StripeController::class, 'proceedPayment'])->name('pay');
 
     Route::post('/seeds/{seedId}/comment', [FrontendSeedController::class, 'comment'])->name('comment');
+    Route::post('/seeds/{seedId}/rating', [FrontendSeedController::class, 'rate'])->name('rate');
 });
 
 Route::middleware('content.writer')->group(function () {

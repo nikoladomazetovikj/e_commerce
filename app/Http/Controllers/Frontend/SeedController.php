@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
+use App\Http\Requests\RateRequest;
 use App\Models\Comment;
 use App\Models\Rating;
 use App\Models\Seed;
@@ -129,4 +130,29 @@ class SeedController extends Controller
         return redirect()->back()->with('success', 'Comment added successfully!');
     }
 
+    public function rate(RateRequest $request, $seedId)
+    {
+        $user = $request->user()->id;
+
+        $checkForRating = Rating::where('user_id', $user)->where('seed_id', $seedId)->count();
+
+        if ($checkForRating == 0) {
+            Rating::create([
+                'user_id' => $user,
+                'seed_id' => $seedId,
+                'review_score' => $request->review_score
+            ]);
+        } else {
+
+            $findId = Rating::where('user_id', $user)->where('seed_id', $seedId)->value('id');
+
+            $rating = Rating::find($findId);
+
+            $rating->review_score = (int) $request->review_score;
+
+            $rating->save();
+        }
+
+        return redirect()->back()->with('success', 'Rating added successfully!');
+    }
 }
