@@ -16,23 +16,30 @@ $(function () {
 function products(data) {
     let card = ``;
     for (let i = 0; i < data.data.length; i++) {
-        console.log(data.data[i])
-        card += `<div class="card col-6">
-                            <img id="best-sales-img" src="${path + data.data[i].image}" class="card-img-top" alt="...">
+
+        card += `<div class="col-4 cards my-2">
+                    <div class="card shadow h-100" >
+                            <img src="${path + data.data[i].image}" class="card-img-top-custom" alt="...">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title">${data.data[i].name}</h5>
+                                    <div class="col-8">
+                                        <p class="card-title">${data.data[i].name}</p>
                                         <p class="card-text">${data.data[i].category}</p>
                                         <a href="products/${data.data[i].id}" class="btn btn-success">Buy
                                             Now</a>
                                     </div>
-                                    <div class="col">
-                                        <h4 class="text-end text-success">${data.data[i].price} $</h4>
+                                    <div class="col-4">
+                                    ${data.data[i].price_with_sale != null ?
+            `<p class="text-end text-decoration-line-through" style="color: red !important;">${data.data[i].price} $</p>
+              <p class="text-end " style="color: lightgreen !important;">${data.data[i].price_with_sale} $</p>`
+             : `<p class="text-end " style="color: lightgreen !important;">${data.data[i].price} $</p>`
+        }
+
                                     </div>
                                 </div>
                             </div>
-                        </div>`
+                        </div>
+                </div>`
         }
 
         $("#products").append(card);
@@ -80,7 +87,7 @@ function paginate(value, page) {
         cache: false,
         async: true,
         success: function (data) {
-            $(".card").hide();
+            $(".cards").hide();
             products(data);
         },
         error: function (error) {
