@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\RateRequest;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Rating;
 use App\Models\Seed;
@@ -42,6 +43,13 @@ class SeedController extends Controller
         return view('frontend.seeds.seed', compact('seed', 'ratings', 'avgRating', 'totalUsersRatings', 'totalComments', 'comments'));
     }
 
+
+    public function products()
+    {
+        $categories = Category::all();
+
+        return view('frontend.seeds.seeds', compact('categories'));
+    }
 
     public function search(Request $request)
     {

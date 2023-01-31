@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse me-auto" id="navbarNavDropdown">
                 <ul class="navbar-nav me-auto font-1rem">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Products</a>
+                        <a class="nav-link active" aria-current="page" href="/products">Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/aboutUs">About Us</a>

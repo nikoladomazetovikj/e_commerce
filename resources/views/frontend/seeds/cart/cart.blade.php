@@ -50,7 +50,8 @@
                        </tr>
                        <tr>
                            <td  class="text-right">
-                               <a href="{{ url('/') }}" class="btn btn-danger"> <i class="fa fa-arrow-left"></i> Continue Shopping</a>
+                               <a href="{{ url('/products') }}" class="btn btn-danger"> <i class="fa
+                               fa-arrow-left"></i> Continue Shopping</a>
                                <a href="/billing-portal" class="btn btn-success"><i class="fa fa-money"></i> Checkout</a>
                            </td>
                        </tr>
