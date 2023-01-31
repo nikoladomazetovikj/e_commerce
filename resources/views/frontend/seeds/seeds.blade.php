@@ -32,8 +32,8 @@
                      <div class="container-fluid">
                          <div class="container mt-5">
                              <div class="row">
-                                 <div class="col-lg-6 offset-lg-6 col-md-8 offset-md-3 col-12">
-                                     <div class="col-12 " id="pagination">
+                                 <div class="col-lg-5  mx-auto offset-lg-6 col-md-8 offset-md-3 col-12">
+                                     <div class="mx-auto" id="pagination">
 
                                      </div>
                                  </div>

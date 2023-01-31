@@ -41,3 +41,16 @@ table * {
 .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
 }
+
+.page-item.active .page-link {
+    background-color: darkgreen;
+    color: #fff;
+    border-color: unset;
+}
+.page-link {
+    color: forestgreen;
+}
+.page-link:hover {
+    background-color: forestgreen;
+    color: white !important;
+}
