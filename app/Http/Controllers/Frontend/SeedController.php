@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Rating;
 use App\Models\Seed;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SeedController extends Controller
@@ -79,6 +80,10 @@ class SeedController extends Controller
     }
     public function addToCart($id)
     {
+        if (Auth::user()->profile()->count() == 0) {
+            return redirect()->back()->with('info', 'Please complete your profile');
+        }
+
         $product = Seed::with('sale')->findOrFail($id);
 
         $cart = session()->get('cart', []);

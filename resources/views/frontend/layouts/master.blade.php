@@ -23,12 +23,19 @@
    <div class="row">
        <div class="col">
            @if(session('success'))
-               <div class="alert alert-success alert-dismissible fade show col-lg-6 col-md-12 mx-auto">
+               <div class="alert alert-fly alert-success alert-dismissible fade show col-lg-6 col-md-12 mx-auto">
                    {{ session('success') }}
                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                </div>
 
            @endif
+               @if(session('info'))
+                   <div class="alert alert-light text-center" role="alert">
+                       {{session('info')}}
+                       <br>
+                       <a href="{{route('profile.edit')}}">Complete Profile</a>
+                   </div>
+               @endif
        </div>
    </div>
 </div>
@@ -62,7 +69,7 @@
     $(document).ready(function () {
 
         window.setTimeout(function() {
-            $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+            $(".alert-fly").fadeTo(1000, 0).slideUp(1000, function(){
                 $(this).remove();
             });
         }, 1500);
