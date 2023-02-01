@@ -6,16 +6,17 @@
          <div class="row">
              <div class="col-lg-3 col-md-2">
                  <div class="row">
-                     <div class="col-lg-12 col-md-8 menu">
+                     <div class="col-lg-12 col-md-8 menu sticky-top">
                              <h5 class="">Categories</h5>
                              <form action="" id="category">
                                  <div class="col-lg-4 col-md-2" id="menu">
                                      <input type="radio" class="btn-check" id="all" autocomplete="off" name="category" value="all">
-                                     <label class="font-size-skills btn-block m-1 btn btn-outline-success rounded text-wrap filter-width p-1" for="all">All</label>
+                                     <label class="btn-block m-1 btn btn-outline-success rounded text-wrap
+                                     filter-width p-2" for="all">All</label>
                                      @foreach($categories as $category)
                                          <input type="radio" class="btn-check category" id="#{{$category->id}}"
                                                 autocomplete="off" name="category" value="{{$category->id}}">
-                                         <label class=" btn-block m-1 btn btn-outline-success text-wrap rounded p-1
+                                         <label class=" btn-block m-1 btn btn-outline-success text-wrap rounded p-2
                                     text-white"
                                                 for="#{{$category->id}}">{{$category->friendly_name}}</label>
                                      @endforeach
