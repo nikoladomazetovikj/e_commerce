@@ -17,6 +17,7 @@ class FrontendController extends Controller
             )
             ->join('seeds as s', 's.id', '=', 'op.seed_id')
             ->join('categories AS c', 'c.id', '=', 's.category_id')
+            ->whereNot('s.quantity', 0)
             ->whereRaw('MONTH(op.created_at) = MONTH(now())
                                 and YEAR(op.created_at) = YEAR(now())')
             ->groupBy('op.seed_id')
