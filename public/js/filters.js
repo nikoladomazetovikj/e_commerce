@@ -26,8 +26,10 @@ function products(data) {
                                     <div class="col-8">
                                         <p class="card-title">${data.data[i].name}</p>
                                         <p class="card-text">${data.data[i].category}</p>
-                                        <a href="products/${data.data[i].id}" class="btn btn-success">Buy
-                                            Now</a>
+                                        ${
+            data.data[i].quantity != 0 ? `<a href="products/${data.data[i].id}" class="btn btn-success">Buy
+                                            Now</a>` : ` <div class="badge bg-white text-wrap text-danger">OUT Of Stock</div>`
+        }
                                     </div>
                                     <div class="col-4">
                                     ${data.data[i].price_with_sale != null ?

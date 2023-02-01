@@ -9,9 +9,13 @@
                 <img src="{{asset('images/' . $s->image)}}" class="img-fluid">
                <div class="row">
                    <div class="col-6">
-                       <a href="{{route('add_to_cart', $s->id)}}">
-                           <button type="button" class="btn btn-success mt-3">Add to Cart</button>
-                       </a>
+                     @if($s->quantity !=0)
+                           <a href="{{route('add_to_cart', $s->id)}}">
+                               <button type="button" class="btn btn-success mt-3">Add to Cart</button>
+                           </a>
+                       @else
+                         <div class="badge bg-white text-wrap text-danger">OUT Of Stock</div>
+                     @endif
                    </div>
                    <div class="col-6 mt-3 border border-top-0 border-start-0 border-bottom-0">
                       @if($s->sale != null)
