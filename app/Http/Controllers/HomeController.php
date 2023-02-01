@@ -113,6 +113,20 @@ class HomeController extends Controller
           return view('dashboard', compact('statsBySeeds', 'lessSailedSeed', 'mostSailedSeedThisMonth', 'lessSailedSeedThisMonth'));
         }
 
-        return view('dashboard');
+        if (Auth::user()->role_id == Role::CUSTOMER->value) {
+            $query = DB::table('online_payments', 'op')
+                ->select('op.order_id',
+                    DB::raw('DATE(op.created_at) AS date'),
+                    DB::raw('sum(op.total_price) as total_price')
+                )
+                ->where('op.user_id', Auth::user()->id)
+                ->groupBy('op.order_id')
+                ->orderBy('date', 'desc')
+                ->paginate(5);
+
+            return view('dashboard', compact('query'));
+        }
+
+
     }
 }
