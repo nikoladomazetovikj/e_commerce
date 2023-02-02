@@ -10,17 +10,27 @@
             <div class="collapse navbar-collapse me-auto" id="navbarNavDropdown">
                 <ul class="navbar-nav me-auto font-1rem">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Products</a>
+                        <a class="nav-link active" aria-current="page" href="/products">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">About Us</a>
+                        <a class="nav-link active" aria-current="page" href="/aboutUs">About Us</a>
                     </li>
 
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="d-flex" role="search" action="{{route('searched')}}" method="POST">
+                    @csrf
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           id="search" name="search">
                 </form>
+
+                <a href="{{ route('cart') }}" class="text-warning ">
+                    <button type="button" class="btn  position-relative">
+                        <i class="fa-sharp fa-solid fa-cart-shopping text-warning"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                       {{ count((array) session('cart')) }}
+                    </span>
+                    </button>
+                </a>
                 <span class="navbar-text">
                         @if(Auth::check())
                         <a class="mx-3"  href="/dashboard">Dashboard</a>

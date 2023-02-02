@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
                 </div>
@@ -69,6 +69,14 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('contentSeeds.all')" :active="request()->routeIs('contentSeeds.all')">
                             {{ __('Seeds Content') }}
+                        </x-nav-link>
+                    </div>
+                @endif
+
+                @if(\Illuminate\Support\Facades\Auth::user()->role_id == \App\Enums\Role::CUSTOMER->value)
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                            {{ __('Home') }}
                         </x-nav-link>
                     </div>
                 @endif

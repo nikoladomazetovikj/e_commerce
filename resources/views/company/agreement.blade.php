@@ -18,7 +18,7 @@
                     <p class="dark:text-white"><b>Seed:</b> {{$c->seed_name}}</p>
                     <p class="dark:text-white"><b>Category:</b> {{$c->category_name}}</p>
                     <p class="dark:text-white"><b>Quantity:</b> {{$c->quantity}}</p>
-                    <p class="dark:text-white"><b>Total:</b> {{$c->total_price}}</p>
+                    <p class="dark:text-white"><b>Total:</b> {{$c->total_price}} $</p>
                     <p class="dark:text-white"><b>Date:</b> {{$c->agreement_date}}</p>
 
                     <hr>

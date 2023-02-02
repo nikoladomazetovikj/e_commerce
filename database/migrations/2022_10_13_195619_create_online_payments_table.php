@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('online_payments', function (Blueprint $table) {
-            $table->id();
+            $table->ulid('order_id');
             $table->bigInteger('user_id')->nullable()->unsigned();
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');

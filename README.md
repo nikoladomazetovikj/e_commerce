@@ -74,19 +74,32 @@ php artisan schedule:work
 
 *NOTE: (this scheduler deletes all inactive or expired sales from the database)*
 
-13. Start application using this command:
+13. Create a profile on `Stripe`
+
+https://stripe.com/
+
+14. In developer tools get your `API` keys: (public and secret)
+
+15. Put them in `ENV` file:
+
+````
+STRIPE_KEY=your-stripe-key
+STRIPE_SECRET=your-stripe-secret
+````
+
+16. Start application using this command:
 
 ```
 php artisan serve
 ```
 
-14. In order to send mails (for testing) create a profile on 
+17. In order to send mails (for testing) create a profile on 
 
 https://mailtrap.io/
 
-16. In `Integrations` select `Laravel 7+` and copy values
+18. In `Integrations` select `Laravel 7+` and copy values
 
-16. Paste the values in `.env` file (like in the .env.example)
+19. Paste the values in `.env` file (like in the .env.example)
 
 ```
 MAIL_MAILER=smtp
@@ -96,8 +109,7 @@ MAIL_USERNAME= {generated username}
 MAIL_PASSWORD= {generated password}
 MAIL_ENCRYPTION=tls
 ```
-
-17. Follow the generated link and start using application (e.g. on localhost)
+20. Follow the generated link and start using application (e.g. on localhost)
 
 ```
 http://127.0.0.1:8000

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Uid\Ulid;
 
 class OnlinePaymentsSeeder extends Seeder
 {
@@ -21,6 +22,7 @@ class OnlinePaymentsSeeder extends Seeder
         $rows = 500;
 
         for ($i = 1; $i <= $rows; $i++) {
+            $orderId = (new Ulid)->toBase32();
             $userId = User::all()->random()->id;
             $date = Carbon::today()->subDays(rand(0, 550));
             $random = rand(1,5);
@@ -32,6 +34,7 @@ class OnlinePaymentsSeeder extends Seeder
 
                 DB::table('online_payments')->insert([
                     [
+                        'order_id' => $orderId,
                         'user_id' => $userId,
                         'seed_id' => $seedId,
                         'quantity' => $quantity,

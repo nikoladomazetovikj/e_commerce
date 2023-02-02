@@ -28,7 +28,6 @@ return new class extends Migration
                 ->on('seeds')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->tinyInteger('review_score');
             $table->timestamps();
         });
     }

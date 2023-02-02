@@ -24,7 +24,17 @@ class SeedResource extends JsonResource
             'sale_end' => $this->sale?->end,
             'created_at' => $this->created_at,
             'price' => $this->price,
-            'quantity' => $this->quantity
+            $this->mergeWhen($this->sale != null, [
+                    'price_with_sale' => $this->price - ($this->price * ($this->sale?->sale / 100))
+                ]
+            ),
+            $this->mergeWhen($this->sale == null, [
+                    'price_with_sale' => null
+                ]
+
+            ),
+            'quantity' => $this->quantity,
+            'rate' => $this->avgRating()
         ];
     }
 }

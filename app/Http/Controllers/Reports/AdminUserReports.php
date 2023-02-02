@@ -17,7 +17,7 @@ class AdminUserReports extends Controller
     public function __invoke(Request $request)
     {
         $query = DB::table('online_payments', 'op')
-                ->select('op.id',
+                ->select('op.order_id',
                             's.name as seed_name',
                             'c.friendly_name as category_name',
                             'op.quantity',

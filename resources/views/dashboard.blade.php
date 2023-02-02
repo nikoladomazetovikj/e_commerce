@@ -18,6 +18,10 @@
                            @include('dashboard.manager')
                        @endif
 
+                       @if(\Illuminate\Support\Facades\Auth::user()->role_id == \App\Enums\Role::CUSTOMER->value)
+                           @include('reports.partials.invoices')
+                       @endif
+
             </div>
         </div>
     </div>

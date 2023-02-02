@@ -3,8 +3,11 @@
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CSVController;
 use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\Frontend\AboutUsController;
+use App\Http\Controllers\Frontend\SeedController as FrontendSeedController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Payment\StripeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reports\AdminCompaniesReports as AdminCompaniesReportsAlias;
@@ -28,6 +31,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/products', [FrontendSeedController::class, 'products'])->name('frontend.seeds');
+Route::get('/products/{id}', [FrontendSeedController::class, 'index'])->name('frontend.seed.id');
+Route::get('/aboutUs', [AboutUsController::class, 'index'])->name('aboutUs');
+Route::get('/search', [FrontendSeedController::class, 'search'])->name('search');
+Route::post('/searched', [FrontendSeedController::class, 'searched'])->name('searched');
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
@@ -38,7 +46,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile-details-add', [ProfileController::class, 'storeUserDetails'])->name('profile.storeDetails');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/invoices', CustomerInvoicesAlias::class)->name('reports.invoices');
-    Route::get('/invoices/{id}', CustomerInvoicesDetailsAlias::class)->name('reports.invoicesData');
+    Route::get('/invoices/{order_id}', CustomerInvoicesDetailsAlias::class)->name('reports.invoicesData');
+
+    Route::get('/cart', [FrontendSeedController::class, 'cart'])->name('cart');
+    Route::get('add-to-cart/{id}', [FrontendSeedController::class, 'addToCart'])->name('add_to_cart');
+    Route::patch('update-cart', [FrontendSeedController::class, 'update'])->name('update_cart');
+    Route::delete('remove-from-cart', [FrontendSeedController::class, 'remove'])->name('remove_from_cart');
+    Route::get('/billing-portal', [StripeController::class, 'billing']);
+    Route::post('/pay', [StripeController::class, 'proceedPayment'])->name('pay');
+
+    Route::post('/seeds/{seedId}/comment', [FrontendSeedController::class, 'comment'])->name('comment');
+    Route::post('/seeds/{seedId}/rating', [FrontendSeedController::class, 'rate'])->name('rate');
 });
 
 Route::middleware('content.writer')->group(function () {
@@ -94,5 +112,8 @@ Route::middleware('manager')->group(function () {
     Route::resource('/sales', SalesController::class);
 
 });
+
+
+
 
 require __DIR__.'/auth.php';

@@ -16,7 +16,8 @@
                                <div class="col">
                                    <h5 class="card-title">{{$msm->name}}</h5>
                                    <p class="card-text">{{$msm->friendly_name}}</p>
-                                   <a href="#" class="btn btn-success">Buy Now</a>
+                                   <a href="{{route('frontend.seed.id', $msm->seed_id)}}" class="btn btn-success">Buy
+                                       Now</a>
                                </div>
                                <div class="col">
                                    <h4 class="text-end text-success">{{$msm->price}} $</h4>

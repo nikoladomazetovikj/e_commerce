@@ -13,7 +13,11 @@ class Comment extends Model
         'comment',
         'user_id',
         'seed_id',
-        'review_score',
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }

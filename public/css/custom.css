@@ -16,3 +16,82 @@ a:link {
 #sale-card-img {
     height: 120px !important;
 }
+
+table * {
+    white-space: nowrap;
+}
+
+.StripeElement {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+.StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+}
+.StripeElement--invalid {
+    border-color: #fa755a;
+}
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}
+
+.page-item.active .page-link {
+    background-color: darkgreen;
+    color: #fff;
+    border-color: unset;
+}
+.page-link {
+    color: forestgreen;
+}
+.page-link:hover {
+    background-color: forestgreen;
+    color: white !important;
+}
+
+.card-img-top-custom {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+}
+
+.menu-responsive {
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .card-img-top-custom {
+        width: 100%;
+        height: 20vh;
+        object-fit: cover;
+    }
+
+}
+
+@media (max-width: 620px) {
+    .menu {
+        display: none;
+    }
+    .menu-responsive {
+        display: block;
+    }
+    .card-img-top-custom {
+        width: 100%;
+        height: 35vh;
+        object-fit: cover;
+    }
+    .pagination {
+        display: -ms-flexbox;
+        flex-wrap: wrap;
+        display: flex;
+        padding-left: 0;
+        list-style: none;
+        border-radius: 0.25rem;
+    }
+}

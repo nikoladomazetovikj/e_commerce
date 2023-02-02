@@ -24,7 +24,10 @@ class DatabaseSeeder extends Seeder
             CompanySeeder::class,
             SeedSeeder::class,
             OnlinePaymentsSeeder::class,
-            CompanyPaymentsSeeder::class
+            CompanyPaymentsSeeder::class,
+            SiteDetailsSeeder::class,
+            CommentSeeder::class,
+            RatingSeeder::class
         ]);
     }
 }

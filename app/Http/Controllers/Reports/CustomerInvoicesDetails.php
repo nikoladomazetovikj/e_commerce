@@ -15,9 +15,16 @@ class CustomerInvoicesDetails extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, $id)
+    public function __invoke(Request $request, $order_id)
     {
-        $invoicesDate = OnlinePayment::where('id', $id)->value('created_at');
+
+        // check if the order is for the requested user
+
+        $checkId = OnlinePayment::where('order_id', $order_id)->value('user_id');
+
+        if ($request->user()->id != (int) $checkId) {
+            abort(404);
+        }
 
         $query = DB::table('online_payments', 'op')
             ->select(
@@ -28,7 +35,7 @@ class CustomerInvoicesDetails extends Controller
             )
             ->join('seeds AS s', 's.id', '=', 'op.seed_id')
             ->join('categories AS c', 'c.id', '=', 's.category_id')
-            ->whereDate('op.created_at', $invoicesDate)
+            ->where('op.order_id', $order_id)
             ->where('user_id', $request->user()->id)
             ->get();
 
@@ -41,7 +48,7 @@ class CustomerInvoicesDetails extends Controller
             )
             ->join('seeds AS s', 's.id', '=', 'op.seed_id')
             ->join('categories AS c', 'c.id', '=', 's.category_id')
-            ->whereDate('op.created_at', $invoicesDate)
+            ->where('op.order_id', $order_id)
             ->where('user_id', $request->user()->id)
             ->sum('op.total_price');
 
