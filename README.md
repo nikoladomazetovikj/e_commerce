@@ -126,3 +126,6 @@ Note: This is only relevant if you are using `MailHog` on your local server.
 ```
 http://127.0.0.1:8000
 ```
+
+<hr>
+Note: For the CMS part, the new `Laravel Breeze` dark mode is used. By default is not integrated in `Laravel`, so basically on every update of the composer the theme will be returned into white. To enable dark mode please run `php artisan breeze:install --dark` and then please  REVERT all new created changes.
