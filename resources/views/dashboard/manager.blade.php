@@ -1,7 +1,7 @@
-<!-- This is an example component -->
-<div id="wrapper" class="max-w-xl px-4 py-4 mx-auto">
-    <div class="sm:grid sm:h-32 sm:grid-flow-row sm:gap-4 sm:grid-cols-3">
-        <div id="jh-stats-positive" class="flex flex-col justify-center px-4 py-4 bg-white border border-gray-300 rounded">
+<div id="wrapper" class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-4 py-4 mx-auto">
+    <div class="sm:grid sm:h-screen sm:grid-flow-row sm:gap-4  mx-auto">
+        <div id="jh-stats-positive" class="flex flex-col justify-center px-4 py-4 bg-white border border-gray-300
+        rounded ">
             <div>
                     <div>
                             <p class="flex items-center justify-end text-green-500 text-md">
@@ -26,7 +26,7 @@
                 <p class="text-lg text-center text-gray-500">Less Selling Seed by All Time</p>
             </div>
         </div>
-        <br>
+
 
         <div id="jh-stats-positive" class="flex flex-col justify-center px-4 py-4 bg-white border border-gray-300 rounded">
             <div>
@@ -40,7 +40,7 @@
                 <p class="text-lg text-center text-gray-500">Most Selling Seed This Month</p>
             </div>
         </div>
-        <br>
+
 
         <div id="jh-stats-negative" class="flex flex-col justify-center px-4 py-4 bg-white border border-gray-300
         rounded">

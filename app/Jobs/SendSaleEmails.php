@@ -58,8 +58,7 @@ class SendSaleEmails implements ShouldQueue
 
 
             foreach ($users as $user) {
-                Mail::to($user->email)->send(new SalesMail($data));
-                sleep(5);
+                Mail::to($user->email)->queue(new SalesMail($data));
             }
 
         }

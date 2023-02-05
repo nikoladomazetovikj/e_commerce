@@ -31,7 +31,7 @@
         lawngreen">
                 -{{$data['sale']}}%</span></p>
     <hr>
-    <p>Price: {{$data['total_price']}}</p>
+    <p>Price: {{$data['total_price']}} $</p>
 
 </div>
 

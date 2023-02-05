@@ -97,6 +97,8 @@ php artisan serve
 
 https://mailtrap.io/
 
+NOTE: Mail Trap is free but limited. There are always alternative tools. One of them is `MailHog`. 
+
 18. In `Integrations` select `Laravel 7+` and copy values
 
 19. Paste the values in `.env` file (like in the .env.example)
@@ -109,8 +111,21 @@ MAIL_USERNAME= {generated username}
 MAIL_PASSWORD= {generated password}
 MAIL_ENCRYPTION=tls
 ```
+ If you are using `Mailhog` please follow the configuration settings.
+```angular2html
+MAIL_MAILER=smtp
+MAIL_HOST=localhost
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+```
+Note: This is only relevant if you are using `MailHog` on your local server.
 20. Follow the generated link and start using application (e.g. on localhost)
 
 ```
 http://127.0.0.1:8000
 ```
+
+
+Note: For the CMS part, the new `Laravel Breeze` dark mode is used. By default is not integrated in `Laravel`, so basically on every update of the composer the theme will be returned into white. To enable dark mode please run `php artisan breeze:install --dark` and then please  REVERT all new created changes.
