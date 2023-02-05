@@ -31,7 +31,7 @@
         <img src="{{asset(asset('images/' . $s->image))}}" width="150" height="50">
     @endforeach
     <hr>
-    <p>Price: {{$order->total_price}}</p>
+    <p>Price: {{$order->total_price}} $</p>
 
 </div>
 
