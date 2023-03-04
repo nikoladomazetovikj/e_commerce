@@ -1,4 +1,4 @@
-$\Large {\text{\color[RGB]{124,252,0}SUPER SEEDS}}$
+# SUPERSEEDS
 
 
 #### To setup the project please follow this instructions:
