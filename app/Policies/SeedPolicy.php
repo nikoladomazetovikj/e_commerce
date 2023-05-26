@@ -6,6 +6,7 @@ use App\Enums\Role;
 use App\Models\Seed;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use function Symfony\Component\Translation\t;
 
 class SeedPolicy
 {
@@ -19,7 +20,7 @@ class SeedPolicy
      */
     public function viewAny(User $user)
     {
-
+        return true;
     }
 
     /**
@@ -31,7 +32,7 @@ class SeedPolicy
      */
     public function view(User $user, Seed $seed)
     {
-
+        return true;
     }
 
     /**
