@@ -27,21 +27,26 @@ class SeedResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('category_id')
-                    ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('description')
+                Forms\Components\MarkdownEditor::make('description')
                     ->required()
                     ->maxLength(65535),
-                Forms\Components\TextInput::make('image')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\FileUpload::make('image')
+                    ->required()->image(),
                 Forms\Components\TextInput::make('price')
-                    ->required(),
+                    ->required()
+                    ->numeric(),
                 Forms\Components\TextInput::make('quantity')
-                    ->required(),
+                    ->required()
+                    ->numeric(),
+                Forms\Components\Select::make('category_id')
+                    ->label('Category')
+                    ->required()
+                    ->options(static function () {
+                        return \App\Models\Category::pluck('friendly_name', 'id');
+                    }),
             ]);
     }
 
