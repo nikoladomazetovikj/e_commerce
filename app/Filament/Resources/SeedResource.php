@@ -51,10 +51,10 @@ class SeedResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image')->label('Image'),
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('price'),
                 Tables\Columns\TextColumn::make('quantity'),
-                Tables\Columns\TextColumn::make('category.friendly_name'),
+                Tables\Columns\TextColumn::make('category.friendly_name')->searchable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
