@@ -52,7 +52,9 @@ class SeedResource extends Resource
     {
         return $table
             ->columns([
-                SpatieMediaLibraryImageColumn::make('image')->label('Image')->square(),
+                SpatieMediaLibraryImageColumn::make('image')
+                    ->label('Image')
+                    ->square(),
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('price'),
                 Tables\Columns\TextColumn::make('quantity'),

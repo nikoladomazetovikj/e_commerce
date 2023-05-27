@@ -37,24 +37,6 @@ class ManagamentSeeder extends Seeder
                 'role_id' => \App\Enums\Role::CONTENT_WRITER
             ],
             [
-                'name' => 'Andrea',
-                'surname' => 'Manager',
-                'email' => 'andrea@superseeds.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make('12345678'), // password (12345678)
-                'remember_token' => Str::random(10),
-                'role_id' => \App\Enums\Role::MANAGER
-            ],
-            [
-                'name' => 'Emilija',
-                'surname' => 'Manager',
-                'email' => 'emilija@superseeds.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make('12345678'), // password (12345678)
-                'remember_token' => Str::random(10),
-                'role_id' => \App\Enums\Role::MANAGER
-            ],
-            [
                 'name' => 'Nikola',
                 'surname' => 'Manager',
                 'email' => 'nikola@superseeds.com',
