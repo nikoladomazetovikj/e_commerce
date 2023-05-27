@@ -3,13 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SeedResource\Pages;
-use App\Models\Category;
 use App\Models\Seed;
 use Filament\Forms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -29,7 +30,7 @@ class SeedResource extends Resource
                 Forms\Components\MarkdownEditor::make('description')
                     ->required()
                     ->maxLength(65535),
-                Forms\Components\FileUpload::make('image')
+                SpatieMediaLibraryFileUpload::make('image')
                     ->required()->image(),
                 Forms\Components\TextInput::make('price')
                     ->required()
@@ -40,6 +41,7 @@ class SeedResource extends Resource
                 Forms\Components\Select::make('category_id')
                     ->label('Category')
                     ->required()
+                    ->enum(\App\Enums\Category::class)
                     ->options(static function () {
                         return \App\Models\Category::pluck('friendly_name', 'id');
                     }),
@@ -50,7 +52,7 @@ class SeedResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image')->label('Image'),
+                SpatieMediaLibraryImageColumn::make('image')->label('Image')->square(),
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('price'),
                 Tables\Columns\TextColumn::make('quantity'),
