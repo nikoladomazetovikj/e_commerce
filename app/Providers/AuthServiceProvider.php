@@ -14,7 +14,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        'App\Models\Seed::class' => 'App\Policies\SeedPolicy::class'
+        'App\Models\Seed::class' => 'App\Policies\SeedPolicy::class',
+        'App\Models\Category::class' => 'App\Policies\CategoryPolicy::class',
     ];
 
     /**
