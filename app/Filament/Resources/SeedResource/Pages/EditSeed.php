@@ -10,7 +10,7 @@ class EditSeed extends EditRecord
 {
     protected static string $resource = SeedResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make(),
