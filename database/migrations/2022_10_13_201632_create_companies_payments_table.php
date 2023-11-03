@@ -25,6 +25,7 @@ return new class extends Migration
             $table->decimal('total_price');
             $table->longText('agreement');
             $table->date('agreement_date');
+            $table->longText('agreement_src')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
