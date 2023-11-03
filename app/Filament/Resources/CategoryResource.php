@@ -7,6 +7,7 @@ use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Tabs\Tab;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
@@ -54,6 +55,17 @@ class CategoryResource extends Resource
     {
         return [
             'index' => Pages\ManageCategories::route('/'),
+        ];
+    }
+
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make('All customers'),
+            'active' => Tab::make('Active customers')
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('active', true)),
+            'inactive' => Tab::make('Inactive customers')
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('active', false)),
         ];
     }
 }
