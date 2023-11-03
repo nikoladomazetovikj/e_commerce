@@ -14,19 +14,23 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::unprepared(<<<EOF
-               CREATE TRIGGER  CompanyQuantityUpdate
-               AFTER INSERT
-               ON companies_payments FOR EACH ROW
-
+        DB::unprepared('
+            CREATE OR REPLACE FUNCTION update_seed_quantity()
+            RETURNS TRIGGER AS $$
             BEGIN
+                UPDATE seeds
+                SET quantity = quantity - NEW.quantity
+                WHERE id = NEW.seed_id;
+                RETURN NEW;
+            END;
+            $$ LANGUAGE plpgsql;
 
-            UPDATE seeds
-            SET seeds.quantity = seeds.quantity - New.quantity
-            WHERE seeds.id = New.seed_id ;
-
-            END
-       EOF);
+            CREATE TRIGGER CompanyQuantityUpdate
+            AFTER INSERT
+            ON companies_payments
+            FOR EACH ROW
+            EXECUTE FUNCTION update_seed_quantity();
+        ');
     }
 
     /**
@@ -36,6 +40,7 @@ return new class extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP TRIGGER `CompanyQuantityUpdate`');
+        DB::unprepared('DROP TRIGGER IF EXISTS CompanyQuantityUpdate ON companies_payments;');
+        DB::unprepared('DROP FUNCTION IF EXISTS update_seed_quantity();');
     }
 };
