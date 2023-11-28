@@ -26,6 +26,7 @@ class UserResource extends Resource
             ->schema([
                 Select::make('role_id')
                     ->label('Role')
+                    ->required()
                     ->options(\App\Models\Role::whereNot('id', Role::CUSTOMER->value)->pluck('name', 'id'))
                     ->searchable(),
                 Forms\Components\TextInput::make('name')
@@ -37,6 +38,7 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
+                    ->unique(ignoreRecord: true)
                     ->maxLength(255),
                 Forms\Components\TextInput::make('password')
                     ->password()
@@ -49,28 +51,14 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('role.name')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('surname')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
+                Tables\Columns\TextColumn::make('role.name')
+                    ->numeric()
                     ->sortable(),
             ])
             ->filters([
